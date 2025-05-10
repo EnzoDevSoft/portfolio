@@ -1,333 +1,635 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
 
-    <link rel="stylesheet" href="styles.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Orbitron:wght@400..900&family=VT323&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Orbitron:wght@400..900&family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+
+
+    />
+
+    <link rel="stylesheet" href="styles.css" />
     <title>Portfólio | Enzo Gattelli - Desenvolvedor Front-End</title>
-</head>
-<body>
-
-
- <nav>
-    <div class="nav-container">
+  </head>
+  <body>
+     
+    <nav>
+      <div class="nav-container">
         <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
-            <span>Portfólio</span>
+          <span>Portfólio</span>
         </div>
         <div class="links">
-            <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="index.html">Home</a></div>
-            <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a href="">Sobre</a></div>
-            <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a href="">Habilidades</a></div>
-            <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><a href="">Projetos</a></div>
-            <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500"><a href="">Contato</a></div>
-            <label class="toggle-switch">
-                <input type="checkbox" id="theme-toggle">
-                <span class="slider"></span>
-            </label>            
+          <div
+            class="link"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="100"
+          >
+            <a href="index.html">home</a>
+          </div>
+          <div
+            class="link"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="200"
+          >
+            <a href="">sobre</a>
+          </div>
+          <div
+            class="link"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="300"
+          >
+            <a href="">habilidades</a>
+          </div>
+          <div
+            class="link"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="400"
+          >
+            <a href="">projetos</a>
+          </div>
+          <div
+            class="link"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="500"
+          >
+            <a href="">contato</a>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="theme-toggle" />
+            <span class="slider"></span>
+          </label>
         </div>
-
-    </div>
-    <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
-    <div class="dropdown">
+      </div>
+      <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+      <div class="dropdown">
         <a href="">Home</a>
         <a href="">Sobre</a>
         <a href="">Habilidades</a>
         <a href="">Projetos</a>
-        <i class="fa-solid fa-xmark cancel"onclick="cancel()"></i>
-    </div>
-    
-</nav>
+        <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+      </div>
+    </nav>
 
-<div class="separator"></div>
+    <div class="separator"></div>
 
-
-<section>
-    <div class="main-container">
-        <a href="https://github.com/EnzoDevSoft" target="_blank" class="image-link">
-        <div class="image" data-aos="zoom-in-right" data-aos-duration="3000">
-            <img src="main-removebg-preview.png" alt="Foto">
-        </div>
+    <section>
+      <div class="main-container">
+        <a
+          href="https://github.com/EnzoDevSoft"
+          target="_blank"
+          class="image-link"
+        >
+          <div class="image" data-aos="zoom-in-right" data-aos-duration="3000">
+            <img src="assets-portfólio/ChatGPT Image 2 de abr. de 2025, 07_04_57.png" alt="Foto" />
+          </div>
         </a>
         <div class="content">
-            <h1 data-aos="fade-right" data-aos-duration="1500" data-aos-delay="700">Olá, eu sou o <span>Enzo Gattelli! :)</span></h1>
-            <h2 class="typing-text" data-aos="fade-left" data-aos-duration="1500" data-aos-delay="900">Sou Programador</h2>
-            <div class="paragraph">
-             <p data-aos="flip-up" data-aos-duration="1500" data-aos-delay="1100"><span>Desenvolvedor Front-End</span></p>
-            </div>
-                <div class="social-links">
-                <a href="" data-aos="zoom-out" data-aos-duration="1500" data-aos-delay="1200"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="" data-aos="zoom-out" data-aos-duration="1500" data-aos-delay="1300"><i class="fa-brands fa-github"></i></a>
-                <a href="" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1400"><i class="fa-brands fa-facebook"></i></a>
-                <a href="" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1500"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-            <div class="btn" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1700">
-                <button>Download CV</button> <button>Entrar em contato</button>
-            </div>
+          <h1
+            data-aos="fade-right"
+            data-aos-duration="1500"
+            data-aos-delay="700"
+          >
+            Olá, me chamo <span>Enzo Gattelli! :)</span>
+          </h1>
+          
+          <div class="paragraph">
+            <p
+              data-aos="flip-up"
+              data-aos-duration="1500"
+              data-aos-delay="1100"
+            >
+              <span>Desenvolvedor Front-End</span>
+            </p>
+          </div>
+          <div class="social-links">
+            <a
+              href=""
+              data-aos="zoom-out"
+              data-aos-duration="1500"
+              data-aos-delay="1200"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+            <a
+              href=""
+              data-aos="zoom-out"
+              data-aos-duration="1500"
+              data-aos-delay="1300"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+            <a
+              href=""
+              data-aos="fade-up"
+              data-aos-duration="1500"
+              data-aos-delay="1400"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a
+              href=""
+              data-aos="fade-up"
+              data-aos-duration="1500"
+              data-aos-delay="1500"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+          </div>
+          <div
+            class="btn"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-delay="1700"
+          >
+            <button>Download CV</button> <button>Entrar em contato</button>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script>
-  AOS.init({offset:0});
-</script>
-<script>
-    function hamburg(){
-        const navbar = document.querySelector(".dropdown")
-        navbar.style.transform = "translateY(0px)"
-    }
-    function cancel(){
-        const navbar = document.querySelector(".dropdown")
-        navbar.style.transform = "translateY(-400px)"
-    }
-    
-</script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({ offset: 0 });
+    </script>
+    <script>
+      function hamburg() {
+        const navbar = document.querySelector(".dropdown");
+        navbar.style.transform = "translateY(0px)";
+      }
+      function cancel() {
+        const navbar = document.querySelector(".dropdown");
+        navbar.style.transform = "translateY(-400px)";
+      }
+    </script>
+
+    <section class="about-me">
+      <h2>&lt;sobre mim/&gt;</h2>
+      <p>
+        <span>Desenvolvedor Front-End</span> com habilidades em
+        <span>JavaScript</span>,
+        <span>React, Tailwind CSS, Sass, Git e GitHub</span>, além de
+        experiência com <span>Node.js</span> para o desenvolvimento de
+        aplicações completas. Tenho interesse em criar interfaces modernas e
+        responsivas, utilizando ferramentas como <span>Figma</span> para o
+        design e prototipação. Atualmente, estou cursando
+        <span>Análise e Desenvolvimento de Sistemas</span>, aprimorando meu
+        conhecimento técnico para oferecer soluções inovadoras e eficazes.
+        Sempre busco novos desafios para crescer profissionalmente e aplicar
+        minhas habilidades em projetos que façam a diferença.
+      </p>
+    </section>
 
 
 
-<section class="about-me">
-    <h2>Sobre mim</h2>
-    <p>
-        <span>Desenvolvedor Front-End</span> com habilidades em <span>JavaScript</span>, <span>React, Tailwind CSS, Sass, Git e GitHub</span>, além de experiência com <span>Node.js</span> para o desenvolvimento de aplicações completas.
+    <section class="cards-section">
+      <h2 class="titulo animated">&lt;habilidades/&gt;</h2>
 
-Tenho interesse em criar interfaces modernas e responsivas, utilizando ferramentas como <span>Figma</span> para o design e prototipação. Atualmente, estou cursando <span>Análise e Desenvolvimento de Sistemas</span>, aprimorando meu conhecimento técnico para oferecer soluções inovadoras e eficazes.
+      <div class="cards-line"></div>
 
-Sempre busco novos desafios para crescer profissionalmente e aplicar minhas habilidades em projetos que façam a diferença.
-    </p>
-</section>
+      
 
 
-
-<section class="cards-section">
-    <h2 class="titulo animated">Habilidades</h2>
-    <div class="container">
+      <div class="container">
         <div class="card animated">
-            <p>HTML5</p>
-            <img src="html.svg" alt="HTML5 Logo">
-            <div class="line-1"></div>
+          <p>HTML5</p>
+          <img src="html.svg" alt="HTML5 Logo" />
+          <div class="line-1"></div>
         </div>
         <div class="card animated">
-            <p>CSS3</p>
-            <img src="css.svg" alt="CSS3 Logo">
-            <div class="line-1"></div>
+          <p>CSS3</p>
+          <img src="css.svg" alt="CSS3 Logo" />
+          <div class="line-1"></div>
         </div>
         <div class="card animated">
-            <p>JavaScript</p>
-            <img src="javascript.svg" alt="JavaScript Logo">
-            <div class="line-1"></div>
+          <p>JavaScript</p>
+          <img src="javascript.svg" alt="JavaScript Logo" />
+          <div class="line-1"></div>
         </div>
         <div class="card animated">
-            <p>React.js</p>
-            <img src="react.svg" alt="React.js Logo">
-            <div class="line-1"></div>
+          <p>React.js</p>
+          <img src="react.svg" alt="React.js Logo" />
+          <div class="line-1"></div>
         </div>
         <div class="card animated">
-            <p>Next.js</p>
-            <img src="nextjs.svg" alt="Next.js Logo">
-            <div class="line-1"></div>
+          <p>Next.js</p>
+          <img src="nextjs.svg" alt="Next.js Logo" />
+          <div class="line-1"></div>
         </div>
         <div class="card animated">
-            <p>Material UI</p>
-            <img src="materialui.svg" alt="Material UI Logo">
-            <div class="line-1"></div>
+          <p>Material UI</p>
+          <img src="materialui.svg" alt="Material UI Logo" />
+          <div class="line-1"></div>
         </div>
         <div class="card animated">
-            <p>Tailwind CSS</p>
-            <img src="tailwindcss.svg" alt="Tailwind CSS Logo">
-            <div class="line-1"></div>
+          <p>Tailwind CSS</p>
+          <img src="tailwindcss.svg" alt="Tailwind CSS Logo" />
+          <div class="line-1"></div>
         </div>
         <div class="card animated">
-            <p>SASS</p>
-            <img src="sass.svg" alt="SASS Logo">
-            <div class="line-1"></div>
+          <p>SASS</p>
+          <img src="sass.svg" alt="SASS Logo" />
+          <div class="line-1"></div>
         </div>
-        <div class="card animated">
-            <p>Figma</p>
-            <img src="figma.svg" alt="Figma Logo">
-            <div class="line-1"></div>
-        </div>
-        <div class="card animated">
-            <p>Bootstrap</p>
-            <img src="BOOTSTRAP.png" alt="Bootstrap Logo">
-            <div class="line-1"></div>
-        </div>
-    </div>
-</section>
-
-
-
-
-<section class="portfolio">
-    <h2 class="titulo-container animated">Meus <span>projetos</span></h2>
-
-    <!-- Subtítulo Destaques -->
-    <div class="animated-group">
-        <div class="subsection animated">
-            <h3 class="subtitle animated">Destaques</h3>
-            <div class="line animated"></div>
-        </div>
-
-        <div class="flex animated">
-            <div class="project animated">
-                <img src="Captura de tela de 2025-01-05 13-49-21.png" alt="Projeto 1" class="project-image">
-                <div class="project-info">
-                    <p>20/12/2023</p>
-                    <button>Ver mais</button>
-                </div>
-            </div>
-            <div class="project animated">
-                <img src="caminho/para/imagem2.jpg" alt="Projeto 2" class="project-image">
-                <div class="project-info">
-                    <p>10/11/2023</p>
-                    <button>Ver mais</button>
-                </div>
-            </div>
-            <div class="project animated">
-                <img src="caminho/para/imagem3.jpg" alt="Projeto 3" class="project-image">
-                <div class="project-info">
-                    <p>27/11/2023</p>
-                    <button>Ver mais</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Subtítulo Todos os Projetos -->
-    <div class="animated-group">
-        <div class="subsection animated">
-            <h3 class="subtitle animated">Todos os projetos</h3>
-            <div class="line animated"></div>
-        </div>
-
-        <div class="flex animated">
-            <div class="project animated">
-                <img src="caminho/para/imagem4.jpg" alt="Projeto 4" class="project-image">
-                <div class="project-info">
-                    <p>01/10/2023</p>
-                    <button>Ver mais</button>
-                </div>
-            </div>
-            <div class="project animated">
-                <img src="caminho/para/imagem5.jpg" alt="Projeto 5" class="project-image">
-                <div class="project-info">
-                    <p>15/09/2023</p>
-                    <button>Ver mais</button>
-                </div>
-            </div>
-            <div class="project animated">
-                <img src="caminho/para/imagem6.jpg" alt="Projeto 6" class="project-image">
-                <div class="project-info">
-                    <p>05/08/2023</p>
-                    <button>Ver mais</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</section>
-
-
-
-
         
+        
+      </div>
+    </section>
+
+  
+    <section class="skills-section">
+  <h2 class="skills-title">&lt;skills/&gt;</h2>
+
+  <div class="skills-line"></div>
+
+  <p class="skills-description">
+    Desde o início da minha carreira como desenvolvedor Front-End, dedico-me a aprimorar minhas habilidades interpessoais e técnicas, visando constante crescimento profissional.
+  </p>
+
+  <div class="skills-cards">
+    <div class="skill-card">
+      <div class="skill-info">
+        <span class="skill-number">01</span>
+        <div class="skill-bar purple"></div>
+      </div>
+      <h3 class="skill-text">aprendendo-sem-parar</h3>
+      <p class="skill-description">
+        A tecnologia nunca para de melhorar, é por isso que aqueles que trabalham com tecnologia também nunca param de aprender.
+      </p>
+    </div>
+  
+    <div class="skill-card">
+      <div class="skill-info">
+        <span class="skill-number">02</span>
+        <div class="skill-bar blue"></div>
+      </div>
+      <h3 class="skill-text">comunicativo</h3>
+      <p class="skill-description">
+        Não importa sua profissão, a comunicação é sempre uma necessidade em todos os setores.
+      </p>
+    </div>
+  
+    <div class="skill-card">
+      <div class="skill-info">
+        <span class="skill-number">03</span>
+        <div class="skill-bar red"></div>
+      </div>
+      <h3 class="skill-text">mente-aberta</h3>
+      <p class="skill-description">
+        Quando você trabalha para pessoas, você tem que aceitar novas ideias de clientes ou colegas de equipe e ser capaz de trabalhar nelas.
+      </p>
+    </div>
+  </div>
+</section>
+
+    
+
+
+<!--==================== PROJECTS ====================-->
+<section class="projects-section">
+  <h2 class="projects-title">&lt;projetos/&gt;</h2>
+
+  <div class="projects-line"></div>
+
+  <p class="projects-description">
+    Projetos são uma forma importante de aprimorar suas habilidades como desenvolvedor.
+Sinta-se à vontade para visitar minha página no <span>GitHub</span> e conferir meus repositórios!
+  </p>
+
+  <div class="projects-grid">
+   
+  <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-portfólio/Captura de tela 2025-03-12 182846.png" alt="Zoológico" class="project-image">
+    </div>
+
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+  <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-portfólio/Captura de tela 2025-03-12 182305.png" alt="Projeto 2" class="project-image">   
+    </div>
+
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+  <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-projetos/Captura de tela 2025-04-29 145656.png" alt="Projeto 3" class="project-image">
+    </div>
+
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+    <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-projetos/Captura de tela 2025-04-29 154322.png" alt="Projeto 4" class="project-image">
+    </div>
+
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+    <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-projetos/Captura de tela 2025-04-29 140458.png" alt="Projeto 4" class="project-image">
+    </div>
+
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+    <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-projetos/Captura de tela 2025-04-29 143735.png" alt="Projeto 4" class="project-image">
+    </div>
+
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+    <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-projetos/Captura de tela 2025-04-29 145428.png" alt="Projeto 4" class="project-image">
+    </div>
+
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+    <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-projetos/Captura de tela 2025-04-29 154003.png" alt="Projeto 4" class="project-image">
+    </div>
+
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+    <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-portfólio/Captura de tela de 2025-01-05 13-49-21.png" alt="Projeto 4" class="project-image">
+    </div>
+
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+    <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-projetos/Captura de tela 2025-04-29 150506.png" alt="Projeto 4" class="project-image">
+    </div>
+
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+    <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-projetos/Captura de tela 2025-04-29 154601.png" alt="Projeto 4" class="project-image">
+    </div>
+
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+    <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-projetos/Captura de tela 2025-04-29 154742.png" alt="Projeto 4" class="project-image">
+    </div>
+
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+  <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-projetos/Captura de tela 2025-04-29 154917.png" alt="Projeto 4" class="project-image">
+    </div>
+
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+  <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-projetos/Captura de tela 2025-04-29 143004.png" alt="Projeto 4" class="project-image">
+    </div>
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+  <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-projetos/Captura de tela 2025-04-29 142448.png" alt="Projeto 4" class="project-image">
+    </div>
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+  <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-projetos/Captura de tela 2025-04-29 143159.png" alt="Projeto 4" class="project-image">
+    </div>
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+  <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-projetos/Captura de tela 2025-04-29 142655.png" alt="Projeto 4" class="project-image">
+    </div>
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+  <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-portfólio/Captura de tela 2025-03-12 182804.png" alt="Projeto 4" class="project-image">
+    </div>
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+  <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-portfólio/Captura de tela 2025-03-12 182211.png" alt="Projeto 4" class="project-image">
+    </div>
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+  <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-portfólio/Captura de tela 2025-03-12 182530.png" alt="Projeto 4" class="project-image">
+    </div>
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+  <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-portfólio/Captura de tela 2025-03-12 182611.png" alt="Projeto 4" class="project-image">
+    </div>
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+  <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-portfólio/Captura de tela 2025-03-12 182724.png" alt="Projeto 4" class="project-image">
+    </div>
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+  <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="assets-projetos/Captura de tela 2025-04-29 163033.png"Projeto 4" class="project-image">
+    </div>
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+  <div class="project-card">
+    <div class="project-image-wrapper">
+      <img src="" alt="Projeto 4" class="project-image">
+    </div>
+    <button class="view-more-btn" onclick="openModal()">Ver mais</button>
+  </div>
+
+  </div>
+</section>
+
+
+<!-- Adicionar mais projetos aqui -->
+
+<!-- Link "Mostrar mais" no final -->
+
 
 <div class="modal-overlay"></div>
 <div id="modal" class="modal">
-    <button class="modal-close">&times;</button>
-    <div class="modal-content">
-        <div class="video-container">
-            <video class="video" controls>
-                <source src="video.mp4" type="video/mp4" />
-                Seu navegador não suporta o elemento de vídeo.
-            </video>
-        </div>
-        <div class="modal-text">
-            <h2 class="modal-title">Título do Projeto</h2>
-            <p class="modal-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit lacus et mauris pharetra, at vehicula enim viverra.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit lacus et mauris pharetra, at vehicula enim viverra.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit lacus et mauris pharetra, at vehicula enim viverra.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit lacus et mauris pharetra, at vehicula enim viverra.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit placeat ad minima reiciendis nostrum consectetur de.
-            </p>
-            <p class="modal-date">20/12/2023</p>
-            <div class="modal-buttons">
-                <button class="modal-btn">Acessar projeto</button>
-                <button class="modal-btn">Acessar repositório</button>
-                <button class="modal-btn">Ver post no LinkedIn</button>
-            </div>
-        </div>
+  <button class="modal-close">&times;</button>
+  <div class="modal-content">
+    <div class="video-container">
+      <video class="video" controls>
+        <source src="video.mp4" type="video/mp4" />
+        Seu navegador não suporta o elemento de vídeo.
+      </video>
     </div>
+    <div class="modal-text">
+      <h2 class="modal-title">Título do Projeto</h2>
+      <p class="modal-description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+        suscipit lacus et mauris pharetra, at vehicula enim viverra. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit
+        lacus et mauris pharetra, at vehicula enim viverra. Lorem ipsum
+        dolor sit amet, consectetur adipiscing elit. Proin suscipit lacus et
+        mauris pharetra, at vehicula enim viverra. Lorem ipsum dolor sit
+        amet, consectetur adipiscing elit. Proin suscipit lacus et mauris
+        pharetra, at vehicula enim viverra. Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Reprehenderit placeat ad minima
+        reiciendis nostrum consectetur de.
+      </p>
+
+      <p class="modal-date">20/12/2023</p>
+
+      <div class="modal-buttons">
+        <button class="modal-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-stroke">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+          Deploy
+        </button>
+      
+        <button class="modal-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-fill">
+            <path d="M12 .5C5.648.5.5 5.648.5 12c0 5.086 3.292 9.391 7.863 10.926c.575.105.785-.25.785-.555c0-.275-.01-1.003-.015-1.968c-3.201.695-3.877-1.542-3.877-1.542c-.522-1.327-1.276-1.68-1.276-1.68c-1.043-.713.08-.699.08-.699c1.153.081 1.76 1.184 1.76 1.184c1.025 1.755 2.69 1.247 3.344.954c.103-.743.4-1.248.727-1.535c-2.554-.29-5.238-1.278-5.238-5.688c0-1.257.45-2.285 1.185-3.09c-.119-.289-.514-1.453.112-3.028c0 0 .967-.31 3.167 1.18a10.94 10.94 0 012.886-.388c.98.005 1.97.132 2.887.388c2.198-1.49 3.164-1.18 3.164-1.18c.628 1.575.233 2.739.114 3.028c.738.805 1.184 1.833 1.184 3.09c0 4.422-2.688 5.394-5.25 5.676c.41.355.778 1.056.778 2.131c0 1.538-.014 2.778-.014 3.158c0 .308.207.666.79.552C20.712 21.388 24 17.084 24 12c0-6.352-5.148-11.5-12-11.5z"/>
+          </svg>
+          Acessar repositório
+        </button>
+      
+        <button class="modal-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-fill">
+            <path d="M4.98 3.5C3.33 3.5 2 4.83 2 6.48c0 1.64 1.33 2.97 2.98 2.97h.02c1.65 0 2.98-1.33 2.98-2.97C7.96 4.83 6.63 3.5 4.98 3.5zM2.4 21.5h5.16V9H2.4v12.5zM9.69 9h4.94v1.71h.07c.69-1.3 2.38-2.68 4.9-2.68c5.24 0 6.2 3.45 6.2 7.93V21.5h-5.17v-6.7c0-1.6-.03-3.68-2.24-3.68c-2.25 0-2.6 1.75-2.6 3.56v6.82H9.69V9z"/>
+          </svg>
+          Ver post no LinkedIn
+        </button>
+      </div>
+      
+      
+
+      
+
+    </div>
+  </div>
 </div>
 
 
 
-<section id="contato">
-    <div class="animated-group-contato">
-        <h2 class="contato-titulo">Contatos</h2>
+
+    <section id="contato">
+      <div class="animated-group-contato">
+        <h2 class="contato-titulo">&lt;contato/&gt;</h2>
         <div class="contato-container">
-            <a href="mailto:enzodevsoft@gmail.com" class="contato-link-item">
-                <div class="contato-item">
-                    <div class="contato-icone">
-                        <img src="EMAIL.svg" alt="E-mail">
-                    </div>
-                    <p class="contato-subtitulo">E-mail</p>
-                    <span class="contato-link">enzodevsoft@gmail.com</span>
-                </div>
-            </a>
+          <a href="mailto:enzodevsoft@gmail.com" class="contato-link-item">
+            <div class="contato-item">
+              <div class="contato-icone">
+                <img src="EMAIL.svg" alt="E-mail" />
+              </div>
+              <p class="contato-subtitulo">E-mail</p>
+              <span class="contato-link">enzodevsoft@gmail.com</span>
+            </div>
+          </a>
 
-            <a href="tel:+5151981380402" class="contato-link-item">
-                <div class="contato-item">
-                    <div class="contato-icone">
-                        <img src="PHONE.svg" alt="Telefone">
-                    </div>
-                    <p class="contato-subtitulo">Telefone</p>
-                    <span class="contato-link">(51) 98138-0402</span>
-                </div>
-            </a>
+          <a href="tel:+5151981380402" class="contato-link-item">
+            <div class="contato-item">
+              <div class="contato-icone">
+                <img src="PHONE.svg" alt="Telefone" />
+              </div>
+              <p class="contato-subtitulo">Telefone</p>
+              <span class="contato-link">(51) 98138-0402</span>
+            </div>
+          </a>
 
-            <a href="https://www.linkedin.com/in/enzo-gattelli-3158b02a3/" target="_blank" class="contato-link-item">
-                <div class="contato-item">
-                    <div class="contato-icone">
-                        <img src="LINKEDIN.svg" alt="LinkedIn">
-                    </div>
-                    <p class="contato-subtitulo">LinkedIn</p>
-                    <span class="contato-link">@enzogattelli</span>
-                </div>
-            </a>
+          <a
+            href="https://www.linkedin.com/in/enzo-gattelli-3158b02a3/"
+            target="_blank"
+            class="contato-link-item"
+          >
+            <div class="contato-item">
+              <div class="contato-icone">
+                <img src="LINKEDIN.svg" alt="LinkedIn" />
+              </div>
+              <p class="contato-subtitulo">LinkedIn</p>
+              <span class="contato-link">@enzogattelli</span>
+            </div>
+          </a>
 
-            <a href="https://github.com/EnzoDevSoft" target="_blank" class="contato-link-item">
-                <div class="contato-item">
-                    <div class="contato-icone">
-                        <img src="GITHUB.svg" alt="GitHub">
-                    </div>
-                    <p class="contato-subtitulo">GitHub</p>
-                    <span class="contato-link">@enzogattelli</span>
-                </div>
-            </a>
+          <a
+            href="https://github.com/EnzoDevSoft"
+            target="_blank"
+            class="contato-link-item"
+          >
+            <div class="contato-item">
+              <div class="contato-icone">
+                <img src="GITHUB.svg" alt="GitHub" />
+              </div>
+              <p class="contato-subtitulo">GitHub</p>
+              <span class="contato-link">@enzogattelli</span>
+            </div>
+          </a>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
     
-</body>
+    
+
+
+  </body>
 </html>
