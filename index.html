@@ -1,38 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      rel="stylesheet"
-
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Orbitron:wght@400..900&family=VT323&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Orbitron:wght@400..900&family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Google Fonts corretamente declarados -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet" />
+</head>
 
 
-    />
-
-    <link rel="stylesheet" href="styles.css" />
-    <title>Portfólio | Enzo Gattelli - Desenvolvedor Front-End</title>
-  </head>
   <body>
+    <div id="root"></div>
+
+    
+    
+
      
     <nav>
       <div class="nav-container">
@@ -86,14 +70,7 @@
           </label>
         </div>
       </div>
-      <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
-      <div class="dropdown">
-        <a href="">Home</a>
-        <a href="">Sobre</a>
-        <a href="">Habilidades</a>
-        <a href="">Projetos</a>
-        <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
-      </div>
+      
     </nav>
 
     <div class="separator"></div>
@@ -206,7 +183,33 @@
     <section class="cards-section">
       <h2 class="titulo animated">&lt;habilidades/&gt;</h2>
 
-      <div class="cards-line"></div>
+      <div class="cards-line" data-aos="custom-grow-line"></div>
+
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init({
+    once: false
+  });
+
+  // Anima ao entrar na tela
+  document.addEventListener('aos:in', ({ detail }) => {
+    if (detail.getAttribute('data-aos') === 'custom-grow-line') {
+      detail.style.animation = 'growLine 1.8s ease-out forwards';
+    }
+  });
+
+  // "Evapora" ao sair da tela
+  document.addEventListener('aos:out', ({ detail }) => {
+    if (detail.getAttribute('data-aos') === 'custom-grow-line') {
+      detail.style.animation = 'fadeOutSmoke 1.5s ease-out forwards';
+    }
+  });
+</script>
+
+
+
+
+
 
       
 
@@ -488,7 +491,7 @@ Sinta-se à vontade para visitar minha página no <span>GitHub</span> e conferir
 
   <div class="project-card">
     <div class="project-image-wrapper">
-      <img src="assets-projetos/Captura de tela 2025-04-29 163033.png"Projeto 4" class="project-image">
+      <img src="assets-projetos/Captura de tela 2025-04-29 163033.png" alt="Projeto 4" class="project-image">
     </div>
     <button class="view-more-btn" onclick="openModal()">Ver mais</button>
   </div>
@@ -629,6 +632,19 @@ Sinta-se à vontade para visitar minha página no <span>GitHub</span> e conferir
     <script src="script.js"></script>
     
     
+
+
+  </body>
+</html>
+    <script type="module" src="/src/main.jsx"></script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+
+
 
 
   </body>
