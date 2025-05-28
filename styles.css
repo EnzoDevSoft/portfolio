@@ -1436,96 +1436,40 @@ body.light-mode .content h1 span {
 
 
 
+/* Media Query para telas menores (tablets e celulares) */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    gap: 40px; /* Reduzir o espaçamento */
+  }
 
-
-/* Estilo do botão de chat */
-.chat-icon {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background-color: #8257e6;
-  color: white;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  font-size: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  .project-card {
+    min-height: auto; /* Ajustar altura mínima */
+  }
 }
 
-.chat-window {
-  display: none;
-  position: fixed;
-  bottom: 100px;
-  right: 25px;
-  width: 300px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  overflow: hidden;
-  font-family: sans-serif;
+
+
+/* Media Query para a seção de contato em telas menores */
+@media (max-width: 768px) {
+  .contato-container {
+    gap: 30px; /* Reduzir o espaçamento entre os itens */
+    justify-content: center; /* Garantir centralização */
+  }
+
+  .contato-item {
+    max-width: 150px; /* Reduzir largura máxima se necessário */
+  }
 }
 
-.chat-header {
-  background: #8257e6;
-  color: white;
-  padding: 12px;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+@media (max-width: 480px) {
+  .contato-container {
+    flex-direction: column; /* Empilhar itens verticalmente */
+    align-items: center; /* Centralizar itens empilhados */
+    gap: 40px; /* Ajustar espaçamento vertical */
+  }
 
-.close-btn {
-  cursor: pointer;
-  font-size: 20px;
-}
-
-.chat-body {
-  padding: 10px;
-  height: 180px;
-  overflow-y: auto;
-  font-size: 14px;
-}
-
-.bot-message, .user-message {
-  margin-bottom: 10px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  max-width: 90%;
-}
-
-.bot-message {
-  background-color: #f1f1f1;
-}
-
-.user-message {
-  background-color: #d1e7ff;
-  align-self: flex-end;
-  text-align: right;
-}
-
-.chat-input {
-  display: flex;
-  border-top: 1px solid #ccc;
-}
-
-.chat-input input {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  outline: none;
-}
-
-.chat-input button {
-  background: #8257e6;
-  color: white;
-  border: none;
-  padding: 0 16px;
-  cursor: pointer;
+  .contato-item {
+    max-width: 80%; /* Permitir que ocupem mais largura */
+  }
 }
