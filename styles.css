@@ -5,12 +5,15 @@
   margin: 0;
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
+
+  border: 1px solid red;
 }
 
 body {
   width: 100%;
   height: 100vh;
   background-color:rgb(0, 0, 0);
+  overflow-x: hidden;
 }
 
 
@@ -540,8 +543,11 @@ body.light-mode .content h1 span {
   height: auto;
   padding: 20px;
   border-radius: 10px;
+<<<<<<< HEAD
   text-align: center;
 }
+=======
+>>>>>>> 7297c6c (Atualizando)
   text-align: center;
   padding: 20px;
 }
