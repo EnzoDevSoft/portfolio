@@ -5,8 +5,6 @@
   margin: 0;
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
-
-  border: 1px solid red;
 }
 
 body {
@@ -543,13 +541,9 @@ body.light-mode .content h1 span {
   height: auto;
   padding: 20px;
   border-radius: 10px;
-<<<<<<< HEAD
+  margin-top: -55px; /* Espaçamento superior */
+
   text-align: center;
-}
-=======
->>>>>>> 7297c6c (Atualizando)
-  text-align: center;
-  padding: 20px;
 }
 
 /* Título da seção */
@@ -557,7 +551,7 @@ body.light-mode .content h1 span {
   font-size: 2rem;
   font-weight: bold;
   color: white; /* Cor destaque */
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   letter-spacing: 2px;
   margin-top: -70px;
   font-family: "JetBrains Mono", monospace;
@@ -665,7 +659,7 @@ body.light-mode .content h1 span {
 
 /* CARDS */
 .cards-section {
-  margin-top: 75px; /* Define o espaçamento da seção para o topo */
+  margin-top: -475px; /* Define o espaçamento da seção para o topo */
   display: flex;
   flex-direction: column; /* Organiza título e cards em coluna */
   align-items: center; /* Centraliza os elementos */
@@ -706,17 +700,6 @@ body.light-mode .content h1 span {
   }
 }
 
-.cards-line {
-  width: 345px;
-  height: 2px;
-  background: linear-gradient(90deg, #8257e6, rgb(55, 37, 77));
-  border-radius: 2px;
-  margin-bottom: 30px;
-  margin-top: 18px;
-  transform-origin: left;
-  opacity: 0;
-  transform: scaleX(0);
-}
 
 
 
@@ -779,7 +762,7 @@ body.light-mode .content h1 span {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   padding: 10px;
   transition: transform 0.6s ease-out, box-shadow 0.6s ease-out;
-  margin-top: 25px; /* Espaçamento entre os cards */
+  margin-top: -27px; /* Espaçamento entre os cards */
 }
 
 /* Nome do card */
@@ -845,7 +828,7 @@ body.light-mode .content h1 span {
   padding: 40px 20px;
   text-align: left;
   color: #fff;
-  margin-top: 80px; /* Ajustado para fluxo normal */
+  margin-top: -460px; /* Ajustado para fluxo normal */
 }
 
 .skills-title { 
@@ -954,7 +937,7 @@ body.light-mode .content h1 span {
 .projects-section {
   padding: 1px 20px;
   background-color:rgb(0, 0, 0);
-  margin-top: 80px; /* Ajustado para fluxo normal */
+  margin-top: -60px; /* Ajustado para fluxo normal */
   color: #fff;
   text-align: center;
 }
@@ -1275,7 +1258,7 @@ body.light-mode .content h1 span {
   text-align: center;
   margin-top: 80px; /* Ajustado para fluxo normal */
 
-  height: 585px; /* Permite que o conteúdo determine a altura */
+  
 }
 
 /* Título */
@@ -1408,9 +1391,8 @@ body.light-mode .content h1 span {
 }
 
 .show-more-container {
-  position: absolute;
-  right: 20px; /* Move o link para a direita */
-  bottom: -20px; /* Move o link mais para baixo */
+  margin-top: 30px;
+  text-align: right;
 }
 
 /* Estilo do link "Mostrar mais" */
@@ -1432,6 +1414,11 @@ body.light-mode .content h1 span {
   transform: scale(1.1);
 }
 
+
+#contato {
+  overflow: hidden;
+  position: relative;
+}
 
 
 
@@ -1473,3 +1460,6 @@ body.light-mode .content h1 span {
     max-width: 80%; /* Permitir que ocupem mais largura */
   }
 }
+
+
+

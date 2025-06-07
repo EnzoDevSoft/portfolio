@@ -1,6 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const elementos = document.querySelectorAll('...'); // seu seletor aqui
-  // Seleciona o checkbox do botão de alternância e o corpo da página
+// Seleciona o checkbox do botão de alternância e o corpo da página
 const themeToggle = document.getElementById("theme-toggle");
 const body = document.body;
 
@@ -192,7 +190,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Executa ao carregar a página
   handleScrollContato();
 });
-});
 
 
 
@@ -202,29 +199,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+window.openModal = openModal;
