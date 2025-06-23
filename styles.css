@@ -1,1246 +1,635 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+/* --- CONFIGURAÇÕES GLOBAIS E VARIÁVEIS --- */
+:root {
+  --primary-color: #8257e6;
+  --primary-dark: #6f48c9;
+  --background-dark: #09090A;
+  --text-dark: #e1e1e6;
+  --card-dark: #13131f;
+  --background-light: #f4f4f5;
+  --text-light: #18181B;
+  --card-light: #ffffff;
+  --font-primary: "Poppins", sans-serif;
+  --font-code: "JetBrains Mono", monospace;
+}
 
 * {
-  padding: 0;
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
-  width: 100%;
-  height: 100vh;
-  background-color:rgb(0, 0, 0);
+  font-family: var(--font-primary);
+  background-color: var(--background-dark);
+  color: var(--text-dark);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+body.light-mode {
+  background-color: var(--background-light);
+  color: var(--text-light);
+}
 
-/* Estilo da barra de navegação */
+img { max-width: 100%; display: block; }
+
+/* --- BARRA DE NAVEGAÇÃO --- */
 nav {
-  position: fixed; /* Fixa o menu no topo da tela */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000; /* Garante que o menu fique sobre outros elementos */
-  background-color:rgb(0, 0, 0); /* Cor de fundo */
-  box-shadow: 0 2px 10px #8257e6; /* Sombras suaves para destacar a barra */
+  z-index: 1001;
+  background-color: rgba(9, 9, 10, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(130, 87, 230, 0.3);
+}
+
+body.light-mode nav {
+  background-color: rgba(244, 244, 245, 0.8);
 }
 
 .nav-container {
   width: 100%;
-  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 80px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px 20px; /* Adiciona espaçamento interno para melhorar o layout */
+  padding: 0 20px;
 }
 
 .nav-container .logo span {
-  font-size: 26px;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #000000;
-  font-family: "JetBrains Mono";
-  transition: color 0.3 linear; /* Suavidade na transição de cor */
+  font-family: var(--font-code);
+  color: var(--text-dark);
 }
+body.light-mode .nav-container .logo span { color: var(--text-light); }
 
-/* Quando o modo claro está ativo */
-body.light-mode .nav-container .logo span {
-  color: #ffffff; /* Preto no modo claro */
-}
-
-.hamburg,
-.cancel {
-  cursor: pointer;
-  position: absolute;
-  right: 15px;
-  top: 10px;
-  color: white;
-  font-size: clamp(2.5rem, 0.5rem + 5vw, 3rem);
-  display: none;
-}
-
-.nav-container .links {
-  display: flex;
-  align-items: center;
-}
-
-.nav-container .links a {
-  font-size: 1.2rem;
-  color: rgb(0, 0, 0);
-  margin: 0 20px;
+.nav-container .desktop-links a {
+  font-size: 1rem;
+  margin: 0 15px;
   text-decoration: none;
-  font-weight: 590;
-  transition: 0.3s linear;
-  font-family: "JetBrains Mono", monospace;
+  font-weight: 500;
+  font-family: var(--font-code);
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+  color: var(--text-dark);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+body.light-mode .nav-container .desktop-links a { color: var(--text-light); }
+.nav-container .desktop-links a:hover {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
 }
 
-.nav-container .links a:hover {
-  color: rgb(150, 0, 220);
-  border-bottom: 2px solid #8257e6;
+/* --- MENU HAMBÚRGUER --- */
+.hamburguer-menu {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 1003;
 }
-
-/* Quando o modo claro está ativo */
-body.light-mode .nav-container .links a {
-  color: rgb(255, 255, 255); /* Cor preta no modo claro */
+.hamburguer-menu .bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-dark);
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
 }
+body.light-mode .hamburguer-menu .bar { background-color: var(--text-light); }
+.hamburguer-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburguer-menu.active .bar:nth-child(2) { opacity: 0; }
+.hamburguer-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-/* Efeito hover no modo claro */
-body.light-mode .nav-container .links a:hover {
-  color: #8257e6; /* Cor verde no hover */
-  border-bottom: 2px solid #8257e6;
+.mobile-nav-links {
+  display: flex;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 80px);
+  background-color: var(--background-dark);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-in-out;
+  z-index: 1002;
 }
+.mobile-nav-links.active { transform: translateX(0); }
+body.light-mode .mobile-nav-links { background-color: var(--background-light); }
+.mobile-nav-links a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 1.8rem;
+  padding: 20px 0;
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-code);
+}
+body.light-mode .mobile-nav-links a { color: var(--text-light); }
+.mobile-nav-links a:hover { color: var(--primary-color); }
 
-/* Estilo do toggle switch */
+/* --- TOGGLE DE TEMA --- */
 .toggle-switch {
   position: relative;
   display: inline-block;
   width: 50px;
   height: 25px;
-  margin-left: auto; /* Empurra o botão para o lado direito */
 }
-
-.toggle-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
+  position: absolute; cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #333;
   transition: 0.4s;
   border-radius: 25px;
 }
 
+/* ================================================== */
+/* == CORREÇÕES DE COR PARA O MODO CLARO (LIGHT MODE) == */
+/* ================================================== */
+
+/* Define a cor de fundo e de texto padrão para o modo claro */
+body.light-mode {
+  background-color: #f4f4f5; /* Um branco um pouco mais suave */
+  color: #18181B;      /* Cor de texto principal escura */
+}
+
+/* Corrige a cor de fundo e borda da barra de navegação */
+body.light-mode nav {
+  background-color: rgba(244, 244, 245, 0.85);
+  border-bottom: 1px solid #ddd;
+}
+
+/* Corrige a cor do logo, links e ícone do menu no modo claro */
+body.light-mode .nav-container .logo span,
+body.light-mode .nav-container .desktop-links a,
+body.light-mode .hamburguer-menu .bar {
+  color: var(--text-light);
+}
+
+/* Corrige a cor dos textos de descrição que estavam apagados */
+body.light-mode .about-me p,
+body.light-mode .skills-description,
+body.light-mode .projects-description,
+body.light-mode .skill-description {
+  color: #555; /* Cinza escuro para boa legibilidade */
+}
+
+/* Mantém a cor de destaque roxa nos textos de descrição */
+body.light-mode .about-me p span,
+body.light-mode .projects-description span {
+  color: var(--primary-color);
+}
+
+/* Corrige os títulos e textos da seção de skills (os 3 quadrados) */
+body.light-mode .skills-title,
+body.light-mode .skill-text {
+  color: var(--text-light);
+}
+
+/* Corrige títulos e textos da seção de contato */
+body.light-mode #contato {
+    background-color: #fff; /* Fundo branco para a seção de contato */
+}
+
+body.light-mode .contato-titulo,
+body.light-mode .contato-subtitulo {
+  color: var(--text-light);
+}
+
+body.light-mode .contato-link {
+    color: #555;
+}
+
+body.light-mode .contato-icone {
+    background-color: #f0f0f0;
+}
+
+
+/* Garante que os cards de habilidades e projetos tenham fundo branco */
+body.light-mode .card,
+body.light-mode .skill-card,
+body.light-mode .project-card {
+    background-color: var(--card-light);
+    border: 1px solid #e4e4e7;
+}
+
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 19px;
-  width: 19px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
+  position: absolute; content: "";
+  height: 19px; width: 19px;
+  left: 3px; bottom: 3px;
+  background-color: #555;
   transition: 0.4s;
   border-radius: 50%;
 }
+input:checked + .slider { background-color: var(--primary-color); }
+input:checked + .slider:before { background-color: white; transform: translateX(25px); }
 
-/* Quando o checkbox está marcado */
-input:checked + .slider {
-  background-color: #8257e6;
-}
-
-input:checked + .slider:before {
-  transform: translateX(25px);
-}
-
-/* Modo escuro */
-body.dark-mode {
-  background-color: #000000;
-  color: white;
-}
-
-.dropdown {
-  z-index: 10;
-  position: absolute;
-  top: 0;
-  transform: translateY(-400px);
-  width: 100%;
-  height: auto;
-  backdrop-filter: blur(5px) brightness(40%);
-  box-shadow: 0 0 20px black;
-  transition: 0.2s linear;
-}
-
-.dropdown a {
-  display: flex;
-  color: white;
-  text-decoration: none;
-  padding: 10px 0;
-  justify-content: center;
-  align-items: center;
-  transition: 0.3 linear;
-}
-
-.dropdown a:hover {
-  background-color: #8257e6;
-}
-
-.separator::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 79px;
-  display: block;
-  height: 1px;
-  width: 100%;
-  background-color: #8257e6; /* Linha roxa */
-  box-shadow: none; /* Remove a sombra */
-  filter: none; /* Remove o brilho ou efeito de neon */
-}
-
-/* Estilo geral para o botão */
-.toggle-switch {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px;
-  opacity: 0; /* Invisível inicialmente */
-  transform: translateY(20px); /* Posicionado abaixo inicialmente */
-  transition: opacity 0.6s ease, transform 0.6s ease; /* Transição suave */
-}
-
-/* Exibe o botão com animação */
-.toggle-switch.show {
-  opacity: 1;
-  transform: translateY(0); /* Volta para a posição original */
-}
-
-/* Esconde o checkbox padrão */
-#theme-toggle {
-  display: none;
-}
-
-/* Estilo do botão */
-.slider {
-  width: 50px;
-  height: 25px;
-  background-color: #8257e6;
-  border-radius: 50px;
-  position: relative;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-/* Bola do botão */
-.slider::before {
-  content: "";
-  width: 20px;
-  height: 20px;
-  background-color: #13131f;
-  border-radius: 50%;
-  position: absolute;
-  top: 1.5px;
-  left: 3.4px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 2px 4px rgb(0, 0, 22);
-}
-
-/* Botão ativo (modo escuro) */
-#theme-toggle:checked + .slider {
-  background-color: #ffffff; /* Cor do botão ativo */
-}
-
-#theme-toggle:checked + .slider::before {
-  transform: translateX(25px); /* Move a bola para a direita */
-}
-
-/* Botão ativo (modo escuro) */
-#toggle-dark-mode:checked + .toggle-label {
-  background-color: #8257e6; /* Cor do botão ativo */
-}
-
-#toggle-dark-mode:checked + .toggle-label .toggle-ball {
-  transform: translateX(25px); /* Move a bola para a direita */
-}
-
-/* Estilos do site em modo claro */
-body.dark-mode {
-  background-color: #ffffff;
-  color: #f1f1f1;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
+/* --- ESTRUTURA E SEÇÕES GERAIS --- */
+main { padding-top: 80px; }
 
 section {
   width: 100%;
-  min-height: 90vh; /* Use min-height for flexibility */
-}
-
-.main-container {
-  width: 100%;
-  height: 100%;
+  padding: 100px 20px;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-
+  flex-direction: column;
   justify-content: center;
-  width: 100vw;
-  height: 100vh; /* Faz com que a seção ocupe toda a altura da tela */
-  position: relative;
+  align-items: center;
+  border-bottom: 1px solid #27272A;
 }
+body.light-mode section { border-bottom-color: #e4e4e7; }
+section:last-child { border-bottom: none; }
 
-.main-container .image {
-  position: relative;
-  margin-top: 0; /* Ajustado para fluxo normal */
-  
-  width: 340px;
-  height: 460px; /*80vh e 500px */
-  overflow: hidden;
-  border-radius: 50%; /* Torna a imagem redonda */
-  border: 2px solid #110920; /* Borda ao redor */
-  box-shadow: 0 0 20px #8257e6; /* Sombra suave */
-  transition: transform 0.1s ease, box-shadow 0.1s ease; /* Transição suave */
-  overflow: hidden; /* Garante que o conteúdo dentro do container siga o formato */
 
-  width: 30vw; /* Ajuste dinâmico conforme a largura da tela */
-  max-width: 300px; /* Define um tamanho máximo */
-  
-  position: relative;
+/* --- SEÇÃO HOME --- */
+#home { min-height: 100vh; }
+#home .main-container {
+  width: 100%; max-width: 1100px;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 40px;
 }
-
-.main-container .image:hover {
-  transform: scale(1.1); /* Aumenta levemente o tamanho da estrutura */
-  box-shadow: 0 0 25px #8257e6; /* Realça a sombra */
-  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out; /* Transição mais suave */
-  cursor: pointer; /* Muda o cursor para indicar interatividade */
+#home .image {
+  position: relative; width: 320px; height: 320px;
+  border-radius: 50%; border: 3px solid rgba(130, 87, 230, 0.5);
+  box-shadow: 0 0 25px var(--primary-color);
+  overflow: hidden; flex-shrink: 0;
 }
-
-
-.main-container .image img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%; /* Mantém a imagem redonda */
-  position: relative;
-  z-index: 1; /* Garante que a imagem fique acima do efeito */
-  transition: none; /* Remove a transição da imagem */
+#home .image img { width: 100%; height: 100%; object-fit: cover; }
+#home .content { text-align: left; max-width: 600px; }
+#home .content h1 { font-size: clamp(2rem, 5vw, 3rem); }
+#home .content h1 span { font-weight: 700; color: var(--primary-color); }
+#home .content .paragraph { font-size: 1.2rem; margin: 10px 0 20px 0; }
+#home .social-links a { text-decoration: none; }
+#home .social-links i {
+  display: inline-flex; justify-content: center; align-items: center;
+  width: 3rem; height: 3rem;
+  background-color: transparent; border: 2px solid var(--primary-color);
+  border-radius: 50%; color: var(--primary-color);
+  margin: 5px 15px 5px 0; font-size: 1.5rem; transition: 0.3s ease;
 }
-
-.main-container .image img:hover {
-  transform: scale(1); /* Leve zoom na imagem ao passar o mouse */
-  transition: transform 0.6s ease-in-out; /* Suaviza o efeito de hover */
-}
-
-
-/* Estilização padrão para ambos os botões */
-.content button {
-  width: 30%;
-  height: 5vh;
-  margin: 30px 15px 30px 0;
-  background-color: #8257e6;
+#home .social-links i:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px var(--primary-color);
+  background-color: var(--primary-color);
   color: white;
-  gap: 40%;
-  border: none;
-  outline: none;
-  font-size: 89%;
-  font-weight: 500;
-  border-radius: 27px;
-  transition: 0.2s linear;
-  cursor: pointer;
 }
-
-.content button:hover {
-  scale: 1.1;
-  color: rgb(150, 0, 220);
-  border: 2px solid rgb(150, 0, 220);
-  background-color: transparent;
-  box-shadow: 0 0 40px 5px #8257e6;
+#home .btn button {
+  padding: 12px 24px; margin: 30px 10px 30px 0;
+  background-color: var(--primary-color);
+  color: white; border: none; font-size: 1rem;
+  font-weight: 600; border-radius: 8px;
+  transition: 0.3s ease; cursor: pointer;
+  font-family:
 }
-
-/* Estilo exclusivo para "Entrar em contato" */
-.content button:nth-child(2) {
-  background-color: #13131f; /* Cor de fundo igual ao body */
-  border: 2px solid #8257e6;
+#home .btn button:hover { transform: scale(1.05); background-color: var(--primary-dark); }
+#home .btn a button {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
 }
+#home .btn a button:hover { background-color: var(--primary-color); color: white; }
 
-.content button:nth-child(2):hover {
-  background-color: transparent; /* Comportamento no hover igual ao outro botão */
+/* --- SEÇÃO SOBRE MIM --- */
+.about-me { text-align: center; }
+.about-me h2 { font-size: 2.5rem; margin-bottom: 20px; font-family: var(--font-code); }
+.about-me p { font-size: 1.1rem; line-height: 1.8; max-width: 800px; color: #ccc; }
+body.light-mode .about-me p { color: #555; }
+.about-me p span { color: var(--primary-color); font-weight: bold; }
+
+/* --- SEÇÃO HABILIDADES (CARDS) --- */
+.cards-section .titulo { font-size: 2.5rem; margin-bottom: 20px; font-family: var(--font-code); }
+.cards-section .cards-line { width: 80px; height: 3px; background: var(--primary-color); margin-bottom: 40px; }
+.cards-section .container {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 30px; width: 100%; max-width: 900px;
 }
-
-.main-container .image img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%; /* Mantém a imagem redonda */
-  position: relative;
-  z-index: 1; /* Garante que a imagem fique acima do efeito */
-  transition: transform 0.3s ease; /* Suaviza o efeito de hover */
+.card {
+  width: 130px; height: 130px; background-color: var(--card-dark);
+  border-radius: 10px; border: 1px solid #27272A;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px; padding: 10px; transition: transform 0.3s ease;
 }
+.card:hover { transform: translateY(-10px); }
+.card p { font-size: 1rem; font-weight: bold; color: var(--primary-color); }
+.card img { width: 50px; height: 50px; }
 
-.image::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%; /* Mantém o formato circular */
-  background: radial-gradient(circle, #8257e6, transparent);
-  z-index: 0; /* Fica abaixo da imagem */
-  box-shadow: 0 0 30px rgba(150, 0, 220, 0.8), 0 0 60px #8257e6; /* Efeito de luz */
-  animation: pulse 1.5s infinite ease-in-out; /* Efeito de pulsação */
+/* --- SKILLS SECTION (3 CARDS) --- */
+.skills-section .skills-title { font-size: 2.5rem; margin-bottom: 20px; font-family: var(--font-code); }
+.skills-section .skills-line { width: 80px; height: 3px; background: var(--primary-color); margin-bottom: 40px; }
+.skills-section .skills-description { max-width: 600px; margin-bottom: 60px; color: #ccc; text-align: center;}
+.skills-cards {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 40px; width: 100%; max-width: 1100px;
 }
-
-.main-container .image img:hover {
-  animation: animate 1.5s ease-in-out infinite;
-  transform: scale(1.1); /* Leve zoom na imagem ao passar o mouse */
+.skill-card {
+  background-color: var(--card-dark); padding: 25px;
+  border-radius: 10px; border: 1px solid #27272A;
+  flex: 1; min-width: 280px;
 }
+.skill-info { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+.skill-number { font-size: 2.5rem; font-weight: 700; color: #555; font-family: var(--font-code); }
+.skill-text { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
+.skill-description { font-size: 0.95rem; line-height: 1.6; color: #aaa; }
 
-@keyframes animate {
-  0% {
-    scale: 1;
-  }
-  50% {
-    scale: 1.05;
-  }
-  100% {
-    scale: 1;
-  }
-}
 
-.main-container .content {
-  color: rgb(0, 0, 0);
-  width: 40%;
-  min-height: 100px;
-
-  width: 50vw; /* 50% da largura da tela */
-  max-width: 600px; /* Limita o tamanho para telas maiores */
-  min-width: 300px; /* Garante um tamanho mínimo */
+/* --- SEÇÃO PROJETOS (OTIMIZADA E RESPONSIVA) --- */
+.projects-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza todo o conteúdo da seção */
   text-align: center;
 }
 
-.content h1 {
-  font-size: clamp(1rem, 1rem + 5vw, 1.8rem);
-  color: rgb(0, 0, 0);
-}
-
-.content h1 span {
-  font-weight: 700;
-  color: #8257e6;
-}
-
-/* Quando o modo claro está ativo */
-body.light-mode .main-container .content {
-  color: rgb(255, 255, 255); /* Texto preto no modo claro */
-}
-
-body.light-mode .content h1 {
-  color: rgb(255, 255, 255); /* Títulos em preto no modo claro */
-}
-
-body.light-mode .content h1 span {
-  color: #8257e6; /* Destaque em verde no modo claro */
-}
-
-.typing-text {
-  display: block;
-  font-size: clamp(1rem, 1rem + 5vw, 2.5rem);
-  font-weight: 700;
-  position: relative;
-  color: #fff; /* cor do texto */
-  font-family: "JetBrains Mono", monospace;
-  white-space: nowrap; /* impede quebra de linha */
-  overflow: hidden; /* esconde o texto enquanto digita */
-  border-right: 3px solid #8257e6; /* cursor piscando */
-  width: 0;
-  animation: typing 2.5s steps(16) infinite alternate, blink 0.7s step-end infinite;
-  margin-left: 100px; /* Espaçamento à esquerda */
-}
-
-/* Animação de digitação */
-@keyframes typing {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 16ch; /* quantidade de caracteres */
-  }
-}
-
-/* Animação do cursor piscando */
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
-}
-
-.typing-text span::before {
-  content: "";
-  color: #8257e6;
-  animation: words 20s infinite;
-}
-
-.typing-text span::after {
-  content: "";
-  background-color: black;
-  position: absolute;
-  width: calc(100% + 8px);
-  height: 100%;
-  border-left: 3px solid black;
-  right: -8;
-  animation: cursor 0.5s infinite;
-}
-
-@keyframes cursor {
-  to {
-    border-left: 3px solid white;
-  }
-}
-
-.content p {
-  font-size: clamp(0.4rem, 0.2rem + 9vw, 1rem);
-  margin: 10px 0;
-  color: #828282;
-}
-
-.social-links i {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 3rem;
-  height: 3rem;
-  background-color: transparent;
-  border: 0.2rem solid #8257e6;
-  border-radius: 50%;
-  color: rgb(150, 0, 220);
-  margin: 5px 15px 5px 0;
-  font-size: 1.5rem;
-  transition: 0.2 linear;
-}
-
-.social-links i:hover {
-  scale: 1.3;
-  filter: drop-shadow(0 0 10px #8257e6);
-  background-color: #8257e6;
-  color: white;
-}
-
-.content button {
-  width: 30%;
-  height: 5vh;
-  margin: 30px 15px 30px 0;
-  background-color: #8257e6;
-  color: white;
-  gap: 40%;
-  border: none;
-  outline: none;
-  font-size: 89%;
-  font-weight: 500;
-  border-radius: 27px;
-  transition: 0.2s linear;
-}
-
-.content button:hover {
-  scale: 1.1;
-  color: rgb(150, 0, 220);
-  border: 2px solid rgb(150, 0, 220);
-  background-color: transparent;
-  box-shadow: 0 0 40px 5px #8257e6;
-}
-
-/* Estilo da seção Sobre Mim */
-.about-me {
-  /* Removido position: absolute e estilos relacionados para fluxo normal */
-  position: relative;
-  top: auto;
-  margin: 50px auto 0 auto; /* Centraliza e adiciona margem superior */
-  width: 90%;
-  max-width: 700px;
-  height: auto;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: -55px; /* Espaçamento superior */
-
-  text-align: center;
-}
-
-/* Título da seção */
-.about-me h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: white; /* Cor destaque */
-  margin-bottom: 30px;
-  letter-spacing: 2px;
-  margin-top: -70px;
-  font-family: "JetBrains Mono", monospace;
-}
-
-/* Parágrafo de texto */
-.about-me p {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #ccc; /* Cor neutra para legibilidade */
-}
-
-/* Destaque para palavras importantes */
-.about-me p span {
-  color: #ccc;
-  font-weight: bold;
-}
-
-/* Ajustes para dispositivos móveis */
-@media (max-width: 768px) {
-  .about-me {
-    padding: 15px;
-  }
-
-  .about-me h2 {
-    font-size: 1.8rem;
-  }
-
-  .about-me p {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 884px) {
-  nav .logo {
-    position: absolute;
-    top: 16px;
-    left: 15px;
-    font-size: 1.5rem;
-  }
-
-  .main-container {
-    display: flex;
-  }
-
-  .nav-container .links {
-    display: none;
-  }
-
-  .hamburg,
-  .cancel {
-    display: block;
-  }
-
-  .main-container .content {
-    width: 80%;
-    margin-top: -40px;
-  }
-
-  .social-links i {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 1.5rem;
-  }
-
-  .typing-text {
-    font-size: 2rem;
-  }
-
-  .main-container .image {
-    z-index: -1;
-    width: 50%;
-    height: 60%;
-  }
-}
-
-@media (max-width: 440px) {
-  .main-container .image {
-    width: 70%;
-    height: 60%;
-  }
-
-  .main-container .content {
-    width: 80%;
-  }
-
-  .main-containe button {
-    margin-top: 15px;
-  }
-}
-
-.container {
-  display: flex;
-  position: absolute;
-}
-
-.container h2 {
-  font-size: 40px;
-  color: white;
-  justify-content: center;
-  margin-top: -190px;
-}
-
-
-
-/* CARDS */
-.cards-section {
-  margin-top: -475px; /* Define o espaçamento da seção para o topo */
-  display: flex;
-  flex-direction: column; /* Organiza título e cards em coluna */
-  align-items: center; /* Centraliza os elementos */
-  padding: 10px;
-  gap: 20px; /* Espaçamento entre o título e o container de cards */
-}
-
-.titulo {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  color: #fff;
-  font-size: 2rem;
-  font-family: "JetBrains Mono", monospace;
-}
-
-@keyframes growLine {
-  from {
-    transform: scaleX(0);
-    opacity: 0;
-    filter: blur(4px);
-  }
-  to {
-    transform: scaleX(1);
-    opacity: 1;
-    filter: blur(0px);
-  }
-}
-
-@keyframes fadeOutSmoke {
-  from {
-    opacity: 1;
-    filter: blur(0px);
-  }
-  to {
-    opacity: 0;
-    filter: blur(8px);
-  }
-}
-
-
-
-
-/* Animações suavizadas */
-.animated,
-.titulo {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-}
-
-.animated.show,
-.titulo.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* SKILLS */
-
-.skills-line {
-  width: 200px; 
-  height: 3px;
-  background: linear-gradient(90deg, #6435d1 0%, #871bb6 100%);
-  border-radius: 2px;
-  margin-top: 10px;
+.projects-section .projects-title {
+  font-size: 2.5rem;
+  font-family: var(--font-code);
   margin-bottom: 20px;
 }
 
-
-.skills-text {
-  color: #ccc;
-  font-size: 1rem;
-  max-width: 600px;
-  text-align: left;
-  margin-left: 10px; 
-  margin-bottom: 50px; 
-  line-height: 1.5;
-}
-
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 100px;
-  justify-content: center; /* Centraliza os cards */
-  gap: 52px; /* Espaçamento entre os cards */
-  width: 100%; /* Garante o uso da largura total */
-  padding: 20px 0; /* Espaçamento vertical interno */
-}
-
-/* Card */
-.card {
-  width: 130px;
-  height: 130px;
-  background-color:rgb(20, 20, 35);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  padding: 10px;
-  transition: transform 0.6s ease-out, box-shadow 0.6s ease-out;
-  margin-top: -27px; /* Espaçamento entre os cards */
-}
-
-/* Nome do card */
-.card p {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #8257e6;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-/* Logos */
-.card img {
-  width: 50px;
-  height: 50px;
-  transition: transform 0.6s ease, filter 0.2s ease;
-}
-
-/* Linha horizontal roxa */
-.line-1 {
-  width: 80%;
+.projects-section .projects-line {
+  width: 80px;
   height: 3px;
-  background-image: linear-gradient(90deg, #6435d1 0%,rgb(60, 21, 77) 100%);
-  margin-top: 10px;
-  border-radius: 2px;
+  background: var(--primary-color);
+  margin-bottom: 40px;
 }
 
-/* Efeito ao passar o mouse */
-.card.animated:hover {
-  transform: translateY(-15px) rotate(5deg); /* Flutuação e inclinação à direita */
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5); /* Realça a sombra */
-}
-
-/* Nome do card ao passar o mouse */
-.card.animated:hover p {
-  color: #8257e6; /* Altera a cor do texto */
-  transition: color 0.3s ease-in-out;
-}
-
-/* Logo ao passar o mouse */
-.card.animated:hover img {
-  transform: rotate(360deg) scale(1.2); /* Rotação completa e aumento */
-  transition: transform 0.6s ease-in-out;
-}
-
-
-
-
-.animated {
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.animated.show {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-
-
-.skills-section {
-  padding: 40px 20px;
-  text-align: left;
-  color: #fff;
-  margin-top: -460px; /* Ajustado para fluxo normal */
-}
-
-.skills-title { 
-  font-size: 2.5rem;
-  color:rgb(255, 255, 255);
-  margin-bottom: 30px; /* aumentei para dar mais distância */
-  margin-left: 80px; /* empurra o título para frente */
-  font-family: "JetBrains Mono", monospace;
-}
-
-.skills-line {
-  width: 280px;
-  height: 2px;
-  background: linear-gradient(90deg, #8257e6,rgb(55, 37, 77));
-  border-radius: 2px;
-  margin-bottom: 30px; /* mais espaço até o texto */
-  margin-left: 130px; /* empurra um pouco a linha para frente */
-}
-
-.skills-description {
-  font-size: 1rem;
-  max-width: 500px;
-  margin-bottom: 60px; /* mais espaço para as skills */
-  margin-left: 80px; /* empurra o texto para frente */
-  margin-top: 40px; /* mais espaço para o texto */
-  color: #ccc;
-}
-
-.skill-description {
-  margin-top: 45px;
-  font-size: 1rem;
-  color: #ccc;
-  
-  line-height: 1.4;
-  max-width: 200px;
-  text-align: left;
-}
-
-
-.skills-cards {
-  display: flex;
-  gap: 180px; /* mantém o espaçamento entre as skills */
-  justify-content: center; /* agora centraliza no meio da página */
-  flex-wrap: wrap;
-  margin-top: 110px; /* continua o espaço para cima */
-}
-
-.skill-card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 200px;
-}
-
-.skill-info {
-  display: flex; 
-  align-items: center;
-  gap: 10px; 
-  margin-bottom: 10px;
-}
-
-.skill-number {
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: rgb(255, 255, 255);
-  font-family: "JetBrains Mono", monospace;
-}
-
-.skill-bar {
-  width: 195px; 
-  height: 22px;
-  margin-left: 12px; 
-  margin-top: -25px; 
-}
-
-/* Cores das barras */
-.purple {
-  background: #8257e6;
-}
-
-.blue {
-  background:rgb(89, 35, 108);
-}
-
-.red {
-  background:rgb(52, 56, 131);
-}
-
-.skill-text {
-  font-size: 1.6rem;
-  font-weight: 1400;
-  color: #fff;
-  font-family: "Share Tech Mono";
-}
-
-
-
-
-
-
-
-
-/* PROJETOS */
-
-
-.projects-section {
-  padding: 1px 20px;
-  background-color:rgb(0, 0, 0);
-  margin-top: -60px; /* Ajustado para fluxo normal */
-  color: #fff;
-  text-align: center;
-}
-
-.projects-title {
-  font-size: 2rem;
-  margin-bottom: 85px;
-  color:rgb(255, 255, 255);
-  margin-top: 80px; /* Ajusta a posição do título */
-  font-family: "JetBrains Mono", monospace;
-}
-
-
-.projects-line {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 345px;
-  height: 2px;
-  background: linear-gradient(90deg, #8257e6,rgb(55, 37, 77));
-  border-radius: 2px;
-  margin: 0 auto; /* Centraliza horizontalmente */
-  margin-bottom: 30px; /* mais espaço até o texto */
-  margin-top: -45px; /* mais espaço para o texto */
-}
-
-.projects-description {
-  font-size: 1rem;
+.projects-section .projects-description {
   max-width: 600px;
-  margin: 0 auto; /* Centraliza o texto */
-  margin-bottom: 60px; /* mais espaço para os cards */
+  margin-bottom: 60px;
   color: #ccc;
-  text-align: center; /* Centraliza o texto */
-  margin-top: 45px; /* mais espaço para o texto */
+  line-height: 1.7;
 }
 
-.projects-description span{
+body.light-mode .projects-section .projects-description {
+  color: #555;
+}
+
+.projects-description span {
+  color: var(--primary-color);
   font-weight: bold;
-  color: #ccc;
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 85px;
+  gap: 30px;
+  width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
-  margin-top: 100px; /* Espaçamento entre os cards */
+  /* Padrão para telas pequenas (Mobile): 1 coluna */
+  grid-template-columns: 1fr;
+}
+
+/* Para telas maiores que 600px (Tablets): 2 colunas */
+@media (min-width: 600px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Para telas maiores que 992px (Desktops): 3 colunas */
+@media (min-width: 992px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .project-card {
-  transform: translateY(18px);
-  background-color: rgb(19, 19, 31);
-  border-radius: 32px;
-  overflow: hidden; /* Para a imagem e o degradê respeitarem o card */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform, opacity;
+  background-color: var(--card-dark);
+  border-radius: 16px;
+  border: 1px solid #27272A;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  min-height: 300px; /* Altura mínima para o card */
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-12px);
+  transform: translateY(-5px);
 }
 
-
+.project-image-wrapper {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
 
 .project-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.project-image-wrapper::after {
-  content: "";
+.view-icon-overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgb(19, 19, 31) 100%);
-  pointer-events: none;
-}
-
-.project-image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden; /* Garante o degradê certo */
-  border-top-left-radius: 32px;
-  border-top-right-radius: 32px;
+  inset: 0;
+  background-color: rgba(130, 87, 230, 0.6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 2;
 }
 
 .view-more-btn {
-  background-color: #8257e6;
-  color: #fff;
+  background-color: var(--primary-color);
+  color: white;
   border: none;
-  padding: 12px 36px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border-radius: 12px;
-  font-weight: 400;
+  padding: 12px 24px;
+  margin: 20px;
+  border-radius: 8px;
+  font-weight: 500;
   font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
-
-  position: relative;
-  overflow: hidden;
+  transition: background-color 0.3s;
+  align-self: center;
+  z-index: 3;
 }
 
-.view-more-btn::after {
-  content: '→';
-  position: absolute;
-  right: -20px;
-  top: 45%;
-  transform: translateY(-50%);
-  transition: right 0.3s;
+/* EFEITO HOVER APENAS PARA DESKTOP */
+@media (hover: hover) and (min-width: 768px) {
+  .project-card .view-more-btn {
+    display: none;
+  }
+  .project-card:hover .view-icon-overlay {
+    opacity: 1;
+  }
+  .project-card:hover .project-image {
+    transform: scale(1.1);
+  }
 }
 
-.view-more-btn:hover::after {
-  right: 12px;
-}
-
-.view-more-btn:hover {
-  background-color: #6f48c9;
-}
-
-
-
-
-
-
-
-/* Janela modal */
-.modal {
+/* --- MODAL --- */
+/* --- MODAL (OTIMIZADO PARA FLUIDEZ E TAMANHO) --- */
+#modal {
   display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  overflow-y: auto;
+  inset: 0; /* Atalho para top, left, right, bottom = 0 */
+  background-color: rgba(0, 0, 0, 0.85); /* Fundo escuro e simples, muito mais rápido que o blur */
+  z-index: 2000;
   padding: 20px;
-  transition: all 0.3s ease-in-out;
-
-
-  
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
-/* Adiciona desfoque ao conteúdo do site quando o modal está ativo */
-.blur-active {
-  filter: blur(3px);
-  pointer-events: none; /* Desabilita interações enquanto o modal está aberto */
-}
-
-/* Tamanho do modal quando ele for aberto */
-.modal.show {
+#modal.active {
   display: flex;
+  opacity: 1;
+  pointer-events: all;
 }
 
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(8px);
-  z-index: 999;
-  display: none;
-}
-
-/* Conteúdo do modal */
 .modal-content {
   display: flex;
   background-color: #13131f;
   border-radius: 10px;
-  overflow: hidden;
   width: 100%;
-  max-width: 1400px;
-  padding: 20px;
-  gap: 20px;
-  position: relative; /* Necessário para posicionar o botão dentro do modal */
+  max-width: 1550px; /* AUMENTADO para dar mais espaço, como no original */
+  max-height: 90vh;
+  padding: 40px; /* Espaçamento interno maior */
+  gap: 40px; /* Espaço maior entre vídeo e texto */
+  position: relative;
+  overflow-y: auto;
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(130, 87, 230, 0.2);
 }
 
-/* Botão de Fechar */
+#modal.active .modal-content {
+  transform: scale(1);
+}
+
 .modal-close {
   position: absolute;
-  top: 254px; /* Ajusta o botão dentro do conteúdo */
-  right: 272px; /* Mantém alinhado à direita */
-  background-color: transparent;
-  color: #8257e6;
-  font-size: 1.8rem;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  color: #aaa;
+  font-size: 2rem;
   border: none;
   cursor: pointer;
-  font-weight: bold;
-  z-index: 1101; /* Certifica-se de estar acima do conteúdo */
-  transition: transform 0.2s ease, color 0.2s ease;
+  z-index: 1;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .modal-close:hover {
-  color: #fff;
-  transform: scale(1.2);
+  color: white;
+  transform: scale(1.1);
 }
 
 .video-container {
-  flex: 2;
+  flex: 1;
+  min-width: 300px;
+  margin-top: 30px;
 }
 
 .video {
   width: 100%;
-  height: 400px;
-  border-radius: 10px;
+  border-radius: 8px;
+  background-color: #000;
 }
 
-/* Área de Texto */
 .modal-text {
-  flex: 2;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  color: #fff;
 }
 
 .modal-title {
-  display: flex;
-  font-size: 1.8rem;
-  color: #8257e6;
-  margin-bottom: 10px;
-  justify-content: center;
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
 }
 
 .modal-description {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   color: #bbb;
-  line-height: 1.5;
-  margin-bottom: 10px;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.technologies-title {
+  width: 100%; /* Força o título a ocupar toda a largura */
+  margin-top: 25px;
+  font-weight: bold;
+  margin-bottom: 10px; /* Define o espaço entre o título e as tags */
+  color: #FFFFFF;
+}
+
+.modal-technologies-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.tech-tag {
+  background-color: rgba(40, 167, 69, 0.2);
+  color: #33d45f;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(40, 167, 69, 0.4);
 }
 
 .modal-date {
-  display: flex;
   font-size: 0.8rem;
-  color: #8257e6;
-  margin-bottom: 20px;
-  justify-content: center;
+  color: #888;
+  margin-top: auto; /* Empurra a data para o final */
+  padding-top: 15px;
 }
 
-/* Botões no modal */
 .modal-buttons {
   display: flex;
-  justify-content: center; /* Centraliza os botões */
-  gap: 35px;
-  width: 100%; /* Garante que os botões ocuparam toda a largura disponível */
-  padding-left: 20px; /* Ajusta o deslocamento dos botões para a direita */
-  padding-right: 20px; /* Ajusta o deslocamento dos botões para a direita */
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 .modal-btn {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   background-color: transparent;
-  color: #8257e6;
-  padding: 8px 15px; /* Botões mais finos */
-  border: 2px solid #8257e6;
+  color: var(--primary-color);
+  padding: 8px 15px;
+  border: 2px solid var(--primary-color);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.modal-btn svg {
-  width: 20px;
-  height: 20px;
-  transition: all 0.1s ease;
-}
-
-.modal-btn svg path {
-  transition: all 0.1s ease;
-}
-
-/* Estilo normal */
-.modal-btn .icon-fill {
-  fill: #8257e6;
-}
-.modal-btn .icon-stroke {
-  stroke: #8257e6;
-}
-
-/* Estilo no hover */
 .modal-btn:hover {
-  background-color: #8257e6;
+  background-color: var(--primary-color);
   color: white;
 }
 
+.modal-btn svg {
+  width: 20px;
+  height: 20px;
+  transition: all 0.2s ease;
+}
+
+.modal-btn .icon-fill {
+  fill: var(--primary-color);
+}
+.modal-btn .icon-stroke {
+  stroke: var(--primary-color);
+}
 .modal-btn:hover .icon-fill {
   fill: white;
 }
@@ -1248,218 +637,150 @@ body.light-mode .content h1 span {
   stroke: white;
 }
 
+/* Deixa o modal responsivo em telas menores */
+@media (max-width: 992px) {
+  .modal-content {
+    flex-direction: column;
+    max-height: 85vh;
+    padding: 20px;
+    text-align: center;
+  }
+  .modal-buttons {
+    justify-content: center;
+  }
+  .modal-date {
+    margin-top: 20px;
+  }
+}
 
-
-/* Seção Contato */
+/* --- SEÇÃO CONTATO --- */
+/* --- SEÇÃO CONTATO (AJUSTADA) --- */
 #contato {
-  padding: 50px 20px;
-  margin: 0 auto;
-  background-color:rgb(0, 0, 0);
-  text-align: center;
-  margin-top: 80px; /* Ajustado para fluxo normal */
-
-  
+  background-color: #101012;
 }
 
-/* Título */
+/* Adicionado para centralizar todo o conteúdo da seção */
+#contato .animated-group-contato {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 .contato-titulo {
-  font-size: 1.9rem; /* Um pouco menor */
-  margin-bottom: 80px; /* Reduz espaço inferior */
-  color: #fff;
-  font-family: "JetBrains Mono", monospace;
+  font-size: 2.5rem;
+  font-family: var(--font-code);
+  margin-bottom: 20px; /* Reduz a margem para a linha ficar mais perto */
 }
 
+/* Estilo para a NOVA linha roxa, igual às outras seções */
+#contato .section-line {
+    width: 80px;
+    height: 3px;
+    background: var(--primary-color);
+    margin-bottom: 60px; /* Espaçamento da linha para os ícones abaixo */
+}
+
+/* Regras existentes que não precisam mudar */
 .contato-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 65px;
+  gap: 50px;
 }
 
-/* Ícones */
-.contato-icone {
-  width: 30px; /* Menor largura */
-  height: 30px; /* Menor altura */
-  padding: 8px; /* Menor preenchimento interno */
-  background-color: #212121;
-  border-radius: 50%;
-  transition: transform 0.2s ease; /* Animação mais rápida */
-}
-
-.contato-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 200px;
-  position: relative;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.contato img {
-  width: 50%;
-  height: 50%;
-}
-
-.contato-icone {
-  width: 60px; /* Ajuste do tamanho do círculo */
-  height: 60px; /* Ajuste do tamanho do círculo */
-  border-radius: 50%;
-  background-color: rgba(39, 37, 37, 0.65);
-  backdrop-filter: blur(10px);
-  display: flex; /* Para centralizar o ícone */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  overflow: hidden; /* Esconde qualquer parte fora do círculo */
-  padding: 0; /* Remove qualquer espaço interno */
-  transition: transform 0.3s ease; /* Animação */
-}
-
-.contato-icone img {
-  width: 50%; /* Ajusta o ícone ao tamanho do círculo */
-  height: 50%; /* Ajusta o ícone ao tamanho do círculo */
-  object-fit: contain; /* Garante que o ícone fique bem ajustado */
-}
-
-.contato-subtitulo {
-  font-size: 0.97rem; /* Ajusta tamanho do subtítulo */
-  margin-top: 15px; /* Espaço entre o círculo e o subtítulo */
-  font-weight: 500;
-  color: #fff;
-  margin-bottom: 5px; /* Ajuste do espaço inferior */
-  transition: transform 0.2s ease; /* Animação mais rápida */
-  font-weight: bold;
-}
-
-/* Links */
-.contato-link {
-  font-size: 0.75rem; /* Ajusta tamanho do link */
-  transition: transform 0.2s ease; /* Animação mais rápida */
-}
-
-.contato-link {
-  font-size: 0.9rem;
-  color: #828282;
-  text-decoration: none;
-  transition: transform 0.1s ease;
-}
-
-/* Faz os links cobrirem toda a área dos itens */
 .contato-link-item {
   text-decoration: none;
   color: inherit;
-  display: block;
 }
 
-.contato-link-item:hover .contato-item {
-  transform: scale(1.15); /* Efeito de hover ao passar o mouse */
-}
-
-/* Hover: Reduz tempo de escala */
 .contato-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  max-width: 200px;
-  position: relative;
-  cursor: pointer;
+  gap: 15px;
+  width: 180px;
   transition: transform 0.3s ease;
 }
 
-/* Hover: aumenta a escala */
 .contato-item:hover {
-  transform: scale(1.15); /* Aumenta mais a escala ao passar o mouse */
+  transform: translateY(-10px);
 }
 
-.contato-item:hover .contato-icone,
-.contato-item:hover .contato-subtitulo,
-.contato-item:hover .contato-link {
-  transform: scale(1.15); /* Consistente com o item pai */
+.contato-icone {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #18181B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.animated-group-contato {
+.contato-subtitulo {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.contato-link {
+  color: #888;
+}
+
+/* --- EFEITO BLUR E ANIMAÇÕES GERAIS --- */
+#page-content.blur-active {
+  filter: blur(5px);
+  pointer-events: none;
+}
+.animated {
   opacity: 0;
-  transform: translateX(-50px);
-  transition: opacity 0.6s ease, transform 0.9s ease;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-
-.animated-group-contato.show {
+.animated.show {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
-.show-more-container {
-  margin-top: 30px;
-  text-align: right;
+/* --- MEDIA QUERIES (Responsividade) --- */
+@media (max-width: 992px) {
+  .desktop-links { display: none; }
+  .hamburguer-menu { display: flex; }
+  #home .main-container { flex-direction: column-reverse; gap: 40px; }
+  #home .content { text-align: center; align-items: center; }
 }
 
-/* Estilo do link "Mostrar mais" */
-.show-more {
-  color: #8257e6;
-  font-size: 1rem;
-  text-decoration: none;
-  background-color: transparent;
-  border: 2px solid #8257e6;
-  border-radius: 25px;
-  padding: 10px 20px;
-  transition: all 0.3s ease;
-  display: inline-block; /* Mantém a formatação correta */
-}
-
-.show-more:hover {
-  background-color: #8257e6;
-  color: #fff;
-  transform: scale(1.1);
-}
-
-
-#contato {
-  overflow: hidden;
-  position: relative;
-}
-
-
-
-
-/* Media Query para telas menores (tablets e celulares) */
 @media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: 1fr; /* Uma coluna em telas menores */
-    gap: 40px; /* Reduzir o espaçamento */
+  section { padding: 60px 20px; }
+  #home .main-container .image { width: 280px; height: 280px; }
+  .modal-content {
+    flex-direction: column;
+    max-height: 85vh;
+    padding: 20px;
+    text-align: center;
   }
-
-  .project-card {
-    min-height: auto; /* Ajustar altura mínima */
-  }
+  .modal-buttons { justify-content: center; }
+  .contato-container { gap: 40px; }
 }
 
 
+/* ======================================= */
+/* == ANIMAÇÕES DE ENTRADA OTIMIZADAS == */
+/* ======================================= */
 
-/* Media Query para a seção de contato em telas menores */
-@media (max-width: 768px) {
-  .contato-container {
-    gap: 30px; /* Reduzir o espaçamento entre os itens */
-    justify-content: center; /* Garantir centralização */
-  }
-
-  .contato-item {
-    max-width: 150px; /* Reduzir largura máxima se necessário */
-  }
+/* Estado inicial para todos os elementos que irão animar na entrada */
+.animate-entry {
+  opacity: 0;
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-@media (max-width: 480px) {
-  .contato-container {
-    flex-direction: column; /* Empilhar itens verticalmente */
-    align-items: center; /* Centralizar itens empilhados */
-    gap: 40px; /* Ajustar espaçamento vertical */
-  }
+/* Tipos de Animação (Pontos de Partida) */
+.animate-entry.fade-up { transform: translateY(30px); }
+.animate-entry.fade-down { transform: translateY(-30px); }
+.animate-entry.fade-right { transform: translateX(-40px); }
+.animate-entry.zoom-in { transform: scale(0.9); }
 
-  .contato-item {
-    max-width: 80%; /* Permitir que ocupem mais largura */
-  }
+/* Estado final quando o elemento se torna visível */
+.animate-entry.is-visible {
+  opacity: 1;
+  transform: none; /* Reseta a posição e escala para o padrão */
 }
-
-
-

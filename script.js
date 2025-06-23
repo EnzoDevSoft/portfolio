@@ -1,202 +1,272 @@
-// Seleciona o checkbox do botão de alternância e o corpo da página
-const themeToggle = document.getElementById("theme-toggle");
-const body = document.body;
-
-// Verifica se há um tema salvo no armazenamento local
-const savedTheme = localStorage.getItem("theme");
-
-// Aplica o tema salvo ao carregar a página
-if (savedTheme === "dark") {
-  body.classList.add("dark-mode");
-  themeToggle.checked = true; // Define o botão como ativado
-} else if (savedTheme === "light") {
-  body.classList.add("light-mode");
-}
-
-// Alterna entre os modos claro e escuro ao clicar no botão
-themeToggle.addEventListener("change", () => {
-  if (themeToggle.checked) {
-    body.classList.remove("light-mode");
-    body.classList.add("dark-mode");
-    localStorage.setItem("theme", "dark"); // Salva o tema escuro no armazenamento local
-  } else {
-    body.classList.remove("dark-mode");
-    body.classList.add("light-mode");
-    localStorage.setItem("theme", "light"); // Salva o tema claro no armazenamento local
-  }
-});
-
 document.addEventListener("DOMContentLoaded", () => {
-  const toggleSwitch = document.querySelector(".toggle-switch");
-  // Adiciona a classe "show" para ativar a animação
+  // === LÓGICA PARA ANIMAÇÃO DE ENTRADA (AO CARREGAR A PÁGINA) ===
+  const entryAnimatedElements = document.querySelectorAll('.animate-entry');
+  // Um pequeno timeout para garantir que a página esteja pronta para animar
   setTimeout(() => {
-    toggleSwitch.classList.add("show");
-  }, 200); // Atraso opcional para maior suavidade
-});
-
-// CARDS
-
-document.addEventListener("DOMContentLoaded", () => {
-  const animatedElements = document.querySelectorAll(".animated");
-  const sectionTitle = document.querySelector(".titulo");
-
-  let isVisible = false; // Controle para evitar reexecuções desnecessárias
-
-  const handleScroll = () => {
-    const triggerPoint = window.innerHeight / 2; // Ajuste para ativar próximo ao meio da tela
-    const sectionTop = sectionTitle.getBoundingClientRect().top;
-
-    // Mostrar ou ocultar baseado na posição
-    if (sectionTop < triggerPoint && sectionTop >= 0 && !isVisible) {
-      toggleVisibility(true);
-    } else if ((sectionTop >= triggerPoint || sectionTop < 0) && isVisible) {
-      toggleVisibility(false);
-    }
-  };
-
-  // Função para mostrar/ocultar elementos
-  const toggleVisibility = (show) => {
-    isVisible = show;
-    animatedElements.forEach((el) => el.classList.toggle("show", show));
-    sectionTitle.classList.toggle("show", show);
-  };
-
-  // Escutador de scroll
-  window.addEventListener("scroll", handleScroll);
-  handleScroll(); // Executa ao carregar
-});
-
-// MODAL
-
-// Seleciona os elementos principais
-const modal = document.getElementById("modal");
-const closeModal = document.querySelector(".modal-close");
-const projectButtons = document.querySelectorAll(".project button");
-const interfaceContent = document.querySelector(".interface"); // Seleciona o conteúdo do site
-
-// Função para abrir o modal
-const openModal = () => {
-  modal.style.display = "flex"; // Exibe o modal
-  interfaceContent.classList.add("blur-active"); // Aplica o desfoque no fundo
-  document.body.style.overflow = "hidden"; // Desabilita o scroll
-};
-
-// Função para fechar o modal
-const hideModal = () => {
-  modal.style.display = "none"; // Oculta o modal
-  interfaceContent.classList.remove("blur-active"); // Remove o desfoque do fundo
-  document.body.style.overflow = "auto"; // Habilita o scroll
-};
-
-// Adiciona evento de clique nos botões dos projetos
-projectButtons.forEach((button) => {
-  button.addEventListener("click", openModal);
-});
-
-// Adiciona evento de clique no botão de fechar
-closeModal.addEventListener("click", hideModal);
-
-// Fecha o modal ao clicar fora dele
-window.addEventListener("click", (event) => {
-  if (event.target === modal) {
-    hideModal();
-  }
-});
-
-// Função que será chamada quando o elemento entrar na tela
-const observer = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // Quando o elemento entra na tela, adiciona a classe 'show'
-        entry.target.classList.add("show");
-      } else {
-        // Quando o elemento sai da tela, remove a classe 'show'
-        entry.target.classList.remove("show");
-      }
+    entryAnimatedElements.forEach(el => {
+      const delay = parseInt(el.dataset.delay, 10) || 0;
+      setTimeout(() => {
+        el.classList.add('is-visible');
+      }, delay);
     });
-  },
-  { threshold: 0.5 }
-); // Define que o elemento deve estar 50% visível para ser considerado visível
+  }, 100);
 
-// Seleciona todos os títulos, subtítulos e projetos e começa a observar
-document
-  .querySelectorAll(".titulo-container, .subtitle, .project")
-  .forEach((element) => {
-    observer.observe(element);
+  // === LÓGICA DO TEMA CLARO/ESCURO ===
+  const themeToggle = document.getElementById("theme-toggle");
+  const body = document.body;
+  if (localStorage.getItem("theme") === "light") {
+    body.classList.add("light-mode");
+    themeToggle.checked = false;
+  } else {
+    body.classList.remove("light-mode");
+    themeToggle.checked = true;
+  }
+  themeToggle.addEventListener("change", () => {
+    body.classList.toggle("light-mode");
+    localStorage.setItem("theme", body.classList.contains("light-mode") ? "light" : "dark");
   });
 
-// ANIMAÇÃO SEÇÃO PROJETOS
+  // === LÓGICA DO MENU HAMBÚRGUER ===
+  const hamburguerMenu = document.querySelector('.hamburguer-menu');
+  const mobileNavLinks = document.querySelector('.mobile-nav-links');
+  const allMobileLinks = mobileNavLinks.querySelectorAll('a');
+  const toggleMenu = () => {
+    hamburguerMenu.classList.toggle('active');
+    mobileNavLinks.classList.toggle('active');
+    document.body.style.overflow = mobileNavLinks.classList.contains('active') ? 'hidden' : 'auto';
+  };
+  hamburguerMenu.addEventListener('click', toggleMenu);
+  allMobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
 
-document.addEventListener("DOMContentLoaded", function () {
-  const portfolioSection = document.querySelector(".portfolio"); // Seleciona a seção de projetos
-  const animatedElements = portfolioSection.querySelectorAll(".animated"); // Seleciona apenas os elementos animados dentro da seção
-
-  function handleScroll() {
-    const sectionTop = portfolioSection.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight * 0.85; // Ativa antes do meio da tela
-
-    if (sectionTop < windowHeight) {
-      portfolioSection.classList.remove("hidden"); // Garante que a seção fique visível
-      animatedElements.forEach((element) => {
-        const elementTop = element.getBoundingClientRect().top;
-        if (elementTop < windowHeight) {
-          element.classList.add("show"); // Ativa a animação
-        } else {
-          element.classList.remove("show"); // Remove para reanimar ao rolar
-        }
-      });
-    }
-  }
-
-  window.addEventListener("scroll", handleScroll);
-  handleScroll(); // Executa ao carregar a página
-});
-
-// ANIMAÇÃO SEÇÃO CONTATOS
-
-document.addEventListener("DOMContentLoaded", () => {
-  const animatedElementsContato = document.querySelectorAll(
-    ".animated-group-contato"
-  );
-  let lastScrollY = window.scrollY;
-
-  const handleScrollContato = () => {
-    const triggerPoint = window.innerHeight / 1.5; // Ajusta para o meio da página
-    const currentScrollY = window.scrollY;
-
-    animatedElementsContato.forEach((el) => {
-      const rect = el.getBoundingClientRect();
-      const isBelow = rect.top > window.innerHeight / 1.9; // Elemento saiu da tela
-      const isVisible = rect.top < triggerPoint && rect.bottom >= 0;
-
-      // Adiciona a animação ao descer e elemento visível
-      if (currentScrollY > lastScrollY && isVisible) {
-        el.classList.add("show");
-      }
-
-      // Remove a animação ao subir e elemento sair da tela
-      if (currentScrollY < lastScrollY && isBelow) {
-        el.classList.remove("show");
+  // === ANIMAÇÕES DE SCROLL OTIMIZADAS (PARA O RESTO DA PÁGINA) ===
+  const scrollAnimatedElements = document.querySelectorAll('.animated');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
       }
     });
+  }, {
+    threshold: 0.15 
+  });
+  scrollAnimatedElements.forEach(el => observer.observe(el));
 
-    lastScrollY = currentScrollY; // Atualiza o valor do último scroll
+  // === LÓGICA DO MODAL (FUNCIONAL) ===
+  const modal = document.getElementById("modal");
+  const closeModalBtn = document.querySelector(".modal-close");
+  const projectButtons = document.querySelectorAll(".project-card");
+  const pageContent = document.getElementById("page-content");
+  const modalTitle = document.querySelector(".modal-title");
+  const modalDescription = document.querySelector(".modal-description");
+  const modalTechnologiesContainer = document.querySelector(".modal-technologies-container");
+  const modalDate = document.querySelector(".modal-date");
+  const modalVideo = document.querySelector(".video");
+  const modalVideoSource = modalVideo ? modalVideo.querySelector("source") : null;
+  const modalButtons = document.querySelectorAll(".modal-btn");
+  
+  // LEMBRE-SE DE COLAR O SEU OBJETO projectData completo aqui!
+  const projectData = {
+    proj1: {
+      title: "Coração Animal - Plataforma de Apoio",
+      description: "Este projeto foi desenvolvido como um exercício prático para testar e aprimorar minhas habilidades em Front-End, com foco em design responsivo, interação do usuário e propósito social. Mais do que apenas um desafio técnico, esta aplicação nasceu da minha preocupação com a preservação da vida selvagem e a crescente ameaça de extinção de diversas espécies ao redor do mundo. Além de funcionar como um espaço educativo, o projeto também tem um viés de ação prática: um botão “Doar” estrategicamente posicionado. Permite que visitantes engajados com a causa contribuam diretamente com instituições e movimentos sérios que trabalham em prol da fauna ameaçada. A intenção por trás desse botão não é apenas promover a doação, mas também criar um canal de conexão entre quem quer ajudar e quem está na linha de frente da proteção ambiental.",
+      technologies: ["HTML5", "CC3 / SASS", "JavaScript"],
+      date: "15/01/2024", video: "videos/coracao.mp4",
+      deploy: "#", github: "#", linkedin: "#"
+    },
+    proj2: {
+      title: "Sala 3D Imersiva - Arte e Gameplay",
+      description: "Este projeto foi idealizado como uma prática pessoal para explorar e consolidar meus conhecimentos em desenvolvimento Front-End, especialmente no que diz respeito à renderização 3D em ambiente web. Busquei criar uma experiência visual imersiva e única, unindo elementos que me inspiram e que fazem parte do meu universo pessoal, como personagens icônicos e cenas de gameplay. Um dos grandes diferenciais da sala são os quadros digitais posicionados nas paredes, exibindo personagens que admiro profundamente. Além disso, inseri uma gameplay em looping contínuo, transmitida em uma TV do ambiente. Esse detalhe contribui para o clima imersivo, transmitindo a sensação de que o usuário está em um espaço onde a tecnologia e a paixão por jogos se encontram em harmonia.",
+      technologies: ["HTML5 / Pug", "SASS / CSS3" ,"JavaScript"],
+      date: "20/02/2024", video: "videos/sala3d.mp4",
+      deploy: "#", github: "#", linkedin: "#"
+    },
+    proj3: {
+      title: "Clone do Spotify - Aplicação Full-Stack",
+      description: "Este projeto foi desenvolvido como parte dos meus estudos no curso da Hashtag Programação, com o objetivo de me aprofundar nas tecnologias do universo Full-Stack. Inspirado na interface e na usabilidade do Spotify, criei um clone funcional da plataforma, com foco na experiência do usuário, design moderno, manipulação de dados e estruturação de um sistema completo, tanto no Front-End quanto no Back-End. Desde o início, encarei este projeto como uma oportunidade de testar minha capacidade de construir uma aplicação robusta, que vai além da interface visual, alcançando também o funcionamento interno da aplicação – como o controle das músicas, navegação entre faixas, simulação de usuários e início da estrutura de banco de dados. Porém, ainda não terminei o restante para poder reproduzir as faixas de música.",
+      technologies: ["React", "MongoDB", "HTML5", "CSS3 / SASS", "JavaScript (ES6+)"],
+      date: "20/12/2023", video: "videos/fullstack.mp4",
+      deploy: "https://seuprojeto.vercel.app", github: "https://github.com/seurepo", linkedin: "https://linkedin.com/in/seuperfil"
+    },
+    proj4: {
+      title: "Barcarollo",
+      description: "Este projeto foi desenvolvido com o objetivo de testar e refinar minhas habilidades como desenvolvedor Front-End, unindo estética sofisticada, boa estrutura de código e uma experiência visual envolvente. O conceito do projeto gira em torno de um restaurante italiano fictício de alto padrão, chamado Barcarollo, com uma proposta moderna, elegante e focada na valorização visual dos pratos. Mais do que apenas um exercício técnico, essa aplicação foi pensada como um exemplo de como o design digital pode traduzir sensações físicas, como sabor, aroma e ambiente. A missão foi criar um site com um visual extremamente limpo, organizado e intuitivo, onde a simplicidade do design evidenciasse a beleza dos pratos e transmitisse a identidade refinada de um restaurante italiano autêntico.",
+      technologies: ["HTML5", "CSS3", "JavaScript"],
+      date: "05/03/2024", video: "videos/barcarollo.mp4",
+      deploy: "#", github: "#", linkedin: "#"
+    },
+    proj5: {
+      title: "Login 3D - Imersão Visual",
+      description: "Este projeto foi criado com a proposta de romper com o padrão tradicional de páginas de login e oferecer uma experiência visual diferenciada. A ideia nasceu como um desafio pessoal para testar minhas habilidades com manipulação de elementos tridimensionais, interações dinâmicas e usabilidade, dentro de um contexto real de sistema de autenticação. Ao desenvolver essa tela, busquei explorar como a profundidade, os movimentos e os efeitos de perspectiva podem influenciar positivamente a experiência do usuário, sem comprometer a clareza e a funcionalidade.",
+      technologies: ["HTML5", "CSS3", "JavaScript"],
+      date: "10/03/2024", video: "videos/login3d.mp4",
+      deploy: "#", github: "#", linkedin: "#"
+    },
+    proj6: {
+      title: "Clone Microsoft",
+      description: "Este projeto foi desenvolvido com o propósito de recriar com o máximo de fidelidade o site oficial da Microsoft, utilizando apenas tecnologias de Front-End. O desafio era simular a navegação, o estilo visual e a arquitetura de um dos maiores sites corporativos do mundo, com o objetivo de testar meu nível de atenção aos detalhes, organização de layout e domínio de estilização responsiva. Ao longo da criação, busquei me aproximar o máximo possível da identidade visual da marca, recriando seções como menus superiores, banners interativos, carrosséis de produtos, destaques e rodapé institucional — sempre com um olhar atento à coerência visual, alinhamento e comportamento dos elementos em diferentes tamanhos de tela.",
+      technologies: ["HTML5", "CSS3"],
+      date: "18/03/2024", video: "videos/microsoft.mp4",
+      deploy: "#", github: "#", linkedin: "#"
+    },
+    proj7: {
+        title: "Clone Spotify - Imersão Alura",
+        description: "Este projeto foi desenvolvido durante uma imersão intensiva promovida pela Alura, com o objetivo de recriar, passo a passo, um clone da plataforma Spotify, utilizando tecnologias fundamentais do desenvolvimento Front-End. Com uma carga horária de 11 horas de aprendizado prático, o curso proporcionou uma experiência rica e desafiadora, na qual pude aplicar diversos conceitos ao mesmo tempo em que assimilava novos conhecimentos. A proposta central era construir uma interface de player de música com estrutura semelhante ao Spotify, mas com espaço para customizações visuais, permitindo também desenvolver uma versão com estilo um pouco diferente da original — algo que me deu liberdade para explorar e experimentar minha criatividade, mesmo dentro do conteúdo guiado.",
+        technologies: ["HTML5", "CSS3", "JavaScript"],
+        date: "25/03/2024", video: "videos/alura.mp4",
+        deploy: "#", github: "#", linkedin: "#"
+    },
+    proj8: {
+        title: "Estilo House",
+        description: "O principal objetivo foi criar um protótipo funcional de loja online, aplicando lógica com JavaScript para controlar produtos, criar e editar carrinhos de compra, além de desenvolver telas de login e registro. Busquei, ao longo do processo, garantir que tudo estivesse bem segmentado: visual, interações, fluxo de usuário e organização geral da página. Este projeto também serviu para reforçar minhas habilidades em controle de estado no Front-End, manipulação de DOM e implementação de funcionalidades práticas que fazem parte do dia a dia de uma aplicação de vendas.",
+        technologies: ["HTML5", "CSS3", "JavaScript"],
+        date: "02/04/2024", video: "videos/estilohouse.mp4",
+        deploy: "#", github: "#", linkedin: "#"
+    },
+    proj9: {
+        title: "Clone Spotify - Web",
+        description: "Este projeto representa uma versão mais simples e web básica de um clone do Spotify, criada com o objetivo de experimentar ideias de estrutura e layout de forma leve, rápida e direta ao ponto. Mesmo não tendo sido finalizado, o processo de construção foi extremamente proveitoso, pois me permitiu reforçar fundamentos da construção de páginas web estáticas, testar elementos visuais e funcionais inspirados na plataforma original, além de explorar o conceito de modularização visual em uma interface mais enxuta. A proposta foi desenvolver uma versão compacta e funcional, ideal para testar rapidamente estruturas de navegação, organização de sessões musicais e elementos do player, sem necessariamente adicionar lógicas complexas ou interações avançadas neste momento.",
+        technologies: ["HTML5", "CSS3", "JavaScript (ES6+)"],
+        date: "10/04/2024", video: "videos/macdemarco.mp4",
+        deploy: "#", github: "#", linkedin: "#"
+    },
+    proj10: {
+        title: "Universo Marvel 3D",
+        description: "Este projeto foi desenvolvido com o objetivo de treinar e expandir minhas habilidades em aplicações com elementos 3D, aliando recursos gráficos interativos com estrutura web. A ideia central foi construir uma galeria de personagens da Marvel com efeito tridimensional, oferecendo uma experiência visual mais imersiva para o usuário. A iniciativa surgiu a partir de uma atividade proposta no curso de Análise e Desenvolvimento de Sistemas, como forma de aplicar conteúdos vistos em aula, especialmente voltados para o desenvolvimento Front-End com integração de elementos 3D. Mesmo sendo um projeto com proposta básica, ele teve grande valor prático, pois me proporcionou contato direto com conceitos de modelagem, perspectiva e interatividade visual, além de consolidar noções fundamentais de composição gráfica no ambiente web.",
+        technologies: ["HTML5", "CSS3", "JavaScript"],
+        date: "15/04/2024", video: "videos/marvel3d.mp4",
+        deploy: "#", github: "#", linkedin: "#"
+    },
+    proj11: {
+        title: "Vingadores - Slider",
+        description: "Este projeto foi desenvolvido com o objetivo de exibir de forma dinâmica e visualmente agradável os principais personagens dos Vingadores, utilizando sliders bem elaborados, com um design limpo e responsivo, que prioriza tanto a estética quanto o desempenho. A proposta foi construir uma interface fluida e moderna, na qual o usuário pudesse navegar entre os heróis favoritos da equipe Vingadores, com transições suaves, sem comprometer a leveza e a performance do site.",
+        technologies: ["HTML5", "CSS3", "JavaScript"],
+        date: "20/04/2024", video: "videos/vingadores.mp4",
+        deploy: "#", github: "#", linkedin: "#"
+    },
+    proj12: {
+        title: "Página de Login",
+        description: "Este projeto foi um dos primeiros desenvolvidos durante o início da minha jornada no Front-End. Trata-se de uma página de login com design intuitivo, leve e funcional, construída inteiramente com HTML5 e CSS3, sem uso de JavaScript. Mesmo sendo um projeto simples, foi uma experiência extremamente valiosa, pois me permitiu aprender na prática como organizar, estilizar e estruturar uma interface de forma eficaz. O objetivo era criar uma tela de acesso visualmente agradável, que demonstrasse bons princípios de design e usabilidade, mesmo sem funcionalidades dinâmicas ou conexão com banco de dados.",
+        technologies: ["HTML5","CSS3"],
+        date: "22/04/2024", video: "videos/login.mp4",
+        deploy: "#", github: "#", linkedin: "#"
+    },
+    proj13: {
+        title: "Lua 3D",
+        description: "Este projeto foi desenvolvido como parte de uma aula prática durante um curso de Front-End, e teve como objetivo central reproduzir uma lua em 3D com realismo visual e interação fluida. A proposta era aplicar conceitos visuais avançados, explorando profundidade, texturas e movimento em tempo real, mesmo dentro do contexto de um ambiente web leve e responsivo. A experiência foi extremamente enriquecedora, pois me permitiu trabalhar com elementos gráficos tridimensionais, algo que exige atenção aos detalhes e um bom domínio de estruturação e estilização em camadas.",
+        technologies: ["HTML5","CSS3 / SASS","JavaScript"],
+        date: "28/04/2024", video: "assets/video-placeholder.mp4",
+        deploy: "#", github: "#", linkedin: "#"
+    },
+    proj14: {
+        title: "Barbearia - Landing Page",
+        description: "Este projeto foi desenvolvido durante uma aula prática de Front-End, ainda no início da minha jornada de estudos, com o objetivo de criar uma Landing Page moderna, funcional e intuitiva para uma barbearia. A proposta era proporcionar aos clientes uma experiência fluida e direta, desde a apresentação dos serviços até o agendamento de um horário para atendimento. A página foi idealizada para refletir o profissionalismo do negócio e facilitar o acesso dos clientes aos principais serviços oferecidos, além de integrar informações essenciais como localização, valores e um botão de ação rápida. Foi um dos meus primeiros projetos que combinou design limpo com funcionalidade real, e foi fundamental para solidificar meus conhecimentos iniciais em estruturação e estilização web.",
+        technologies: ["HTML5", "CSS3", "SASS",],
+        date: "02/05/2024", video: "assets/video-placeholder.mp4",
+        deploy: "#", github: "#", linkedin: "#"
+    },
+    
+    proj16: {
+        title: "Terra 3D",
+        description: "Este projeto foi desenvolvido com o intuito de aprimorar minhas habilidades em ambientes 3D, explorando conceitos de movimentação, imersão e ambientação em projetos Front-End. Assim como o projeto da Lua 3D que fiz anteriormente, este trabalho teve uma proposta parecida, mas com uma abordagem mais rica e simbólica, representando o planeta Terra cercado por elementos naturais e aviões em movimento, criando uma atmosfera visual impactante e cheia de vida. O foco principal foi construir uma experiência visual única, que conectasse tecnologia e natureza, transmitindo movimento e equilíbrio em uma representação tridimensional. Foi um exercício excelente para aprofundar meus conhecimentos em manipulação 3D no navegador, tanto no aspecto técnico quanto artístico.",
+        technologies: ["HTML5", "CSS3", "JavaScript"],
+        date: "10/05/2024", video: "videos/terra3d.mp4",
+        deploy: "#", github: "#", linkedin: "#"
+    },
+    proj17: {
+        title: "Los Angeles - Landing Page",
+        description: "Este projeto foi desenvolvido nos primeiros passos da minha jornada como desenvolvedor Front-End. A proposta era criar uma Landing Page visualmente atraente e bem estruturada, com o objetivo de apresentar e destacar os principais pontos turísticos e características culturais da cidade de Los Angeles. Além de servir como uma prática técnica, o projeto também foi uma forma de explorar o conceito de design voltado para turismo e promoção de destinos urbanos.",
+        technologies: ["HTML5"],
+        date: "15/05/2024", video: "videos/losangeles.mp4",
+        deploy: "#", github: "#", linkedin: "#"
+    },
+    proj18: {
+        title: "Carrossel - Ilustrativo",
+        description: "Este projeto foi idealizado com o objetivo de explorar diferentes culturas ao redor do mundo através de imagens e palavras inspiradoras. Desenvolvi um carrossel interativo com foco visual e cultural, que exibe fotos ilustrativas de diversos países – como China, Islândia, EUA, entre outros acompanhadas de frases reflexivas e poéticas de escritores renomados que, de alguma forma, capturam a essência de cada nação apresentada.",
+        technologies: ["HTML5", "CSS3 / Stylus"],
+        date: "20/05/2024", video: "videos/carrossel.mp4",
+        deploy: "#", github: "#", linkedin: "#"
+    },
+    
+    proj20: {
+        title: "Game Tower - Construção de Torres",
+        description: "O Game Tower, é um projeto que desenvolvi em colaboração com colegas de curso, com o objetivo de aplicar na prática os conhecimentos adquiridos em programação e desenvolvimento de jogos durante nossa formação. O foco foi criar um jogo leve, viciante e acessível, ideal para usuários que desejam se entreter de forma rápida e divertida, enquanto tentam bater seus próprios recordes na construção de torres. Essa experiência em grupo proporcionou uma imersão completa no processo de desenvolvimento de um jogo, desde o planejamento e definição de mecânicas até a divisão de tarefas e execução em equipe, reforçando habilidades técnicas e de trabalho colaborativo.",
+        technologies: ["HTML5", "CSS3 / SASS", "TypeScript", "JavaScript"],
+        date: "30/05/2024", video: "videos/gametower.mp4",
+        deploy: "#", github: "#", linkedin: "#"
+    },
+    proj21: {
+        title: "Velozz",
+        description: "Este projeto foi desenvolvido com o objetivo de praticar e evoluir minhas habilidades em desenvolvimento Front-End, criando uma plataforma simulada de aluguel de veículos com uma experiência de navegação fluida, moderna e responsiva. O site permite que os usuários escolham entre carros esportivos de alto desempenho, veículos off-road para aventuras ou passeios personalizados com condutores especializados, adequando-se a diferentes estilos de público. O diferencial do projeto está na flexibilidade: o cliente pode optar por alugar o veículo por dias, semanas ou meses, ou ainda contratar um passeio completo, com roteiros e experiências planejadas — seja em estradas urbanas, trilhas, montanhas ou litoral.",
+        technologies: ["HTML5", "CSS3", "JavaScript"],
+        date: "10/04/2024", 
+        video: "videos/cars.mp4",
+        deploy: "#", github: "#", linkedin: "#"
+    },
+    proj22: {
+        title: "FP Sellection",
+        description: "Este projeto foi realizado durante o início da minha jornada como desenvolvedor Front-End, baseado em um curso prático no YouTube dividido em duas aulas explicativas. A proposta original era criar um site interativo destacando alguns dos carros esportivos mais desejados do mundo, como Ferrari, Porsche e Lamborghini. Embora o projeto tenha sido desenvolvido com base no conteúdo do curso, fiz adaptações e personalizações no código e no design, como forma de fixar o conhecimento e explorar novas abordagens com JavaScript e estilizações personalizadas. Isso incluiu ajustes no layout, cores, efeitos de transição e melhorias na responsividade. Esse projeto foi fundamental para reforçar meus conhecimentos em estruturação de interfaces, manipulação de elementos DOM e aplicação prática de CSS e JavaScript de forma independente, mesmo com uma base orientada.",
+        technologies: ["HTML5", "CSS3", "JavaScript"],
+        date: "22/10/2024", 
+        video: "videos/sport.mp4",
+        deploy: "https://fp-selle.vercel.app/", github: "https://github.com/EnzoDevSoft/FP-Selle", linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7342674607264432128/"
+    },
+    
   };
 
-  // Escutador de scroll
-  window.addEventListener("scroll", handleScrollContato);
+  const openModal = (event) => {
+    const projectId = event.currentTarget.getAttribute("data-project");
+    const data = projectData[projectId];
+    if (!data) {
+        console.error("Dados para o projeto " + projectId + " não encontrados.");
+        return;
+    }
 
-  // Executa ao carregar a página
-  handleScrollContato();
+    modalTitle.textContent = data.title;
+    modalDescription.textContent = data.description;
+    modalDate.textContent = data.date;
+    
+    modalTechnologiesContainer.innerHTML = '';
+    if (data.technologies && data.technologies.length > 0) {
+      const techTitle = document.createElement('h4');
+      techTitle.textContent = 'Tecnologias Utilizadas';
+      techTitle.className = 'technologies-title';
+      modalTechnologiesContainer.appendChild(techTitle);
+      data.technologies.forEach(techName => {
+        const techTag = document.createElement('span');
+        techTag.className = 'tech-tag';
+        techTag.textContent = techName;
+        modalTechnologiesContainer.appendChild(techTag);
+      });
+    }
+
+    if (modalVideoSource && data.video) {
+      modalVideoSource.src = data.video;
+      modalVideo.load();
+    }
+    
+    modalButtons[0].onclick = () => window.open(data.deploy, "_blank");
+    modalButtons[1].onclick = () => window.open(data.github, "_blank");
+    modalButtons[2].onclick = () => window.open(data.linkedin, "_blank");
+
+    modal.classList.add("active");
+    if(pageContent) pageContent.classList.add("blur-active");
+    document.body.style.overflow = "hidden";
+  };
+
+  const hideModal = () => {
+    modal.classList.remove("active");
+    if(pageContent) pageContent.classList.remove("blur-active");
+    document.body.style.overflow = "auto";
+    if (modalVideo) modalVideo.pause();
+  };
+
+  projectButtons.forEach(btn => btn.addEventListener("click", openModal));
+  if (closeModalBtn) closeModalBtn.addEventListener("click", hideModal);
+  
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      hideModal();
+    }
+  });
 });
-
-
-
-
-
-
-
-
-
-window.openModal = openModal;
