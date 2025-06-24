@@ -1,14 +1,184 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-    <script type="module" crossorigin src="/assets/index-DK-xQhXp.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D8b4DHJx.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio | Enzo Gattelli - Desenvolvedor Front-End</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+        <span>Portfólio</span>
+      </div>
+      <div class="desktop-links">
+        <a href="#home" class="link">home</a>
+        <a href="#sobre" class="link">sobre</a>
+        <a href="#habilidades" class="link">habilidades</a>
+        <a href="#projetos" class="link">projetos</a>
+        <a href="#contato" class="link">contato</a>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="theme-toggle" />
+        <span class="slider"></span>
+      </label>
+      <div class="hamburguer-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+    <div class="mobile-nav-links">
+        <a href="#home">home</a>
+        <a href="#sobre">sobre</a>
+        <a href="#habilidades">habilidades</a>
+        <a href="#projetos">projetos</a>
+        <a href="#contato">contato</a>
+    </div>
+  </nav>
+
+  <main id="page-content">
+    <section id="home">
+      <div class="main-container">
+        <div class="image-link">
+          <div class="image">
+            <img src="assets-portfólio/WhatsApp Image 2025-06-13 at 20.55.31.jpeg" alt="Foto de Enzo Gattelli" />
+          </div>
+        </div>
+        <div class="content">
+          <h1>Olá, me chamo <span>Enzo Gattelli! :)</span></h1>
+          <div class="paragraph">
+            <p><span>Desenvolvedor Front-End</span></p>
+          </div>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/enzo-gattelli-3158b02a3/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/EnzoDevSoft" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100008157727598" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+          <div class="btn">
+            <button>Download CV</button>
+            <a href="#contato"><button>Entrar em contato</button></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-me" id="sobre">
+      <div class="about-me-content animated">
+        <h2>&lt;sobre mim/&gt;</h2>
+        <p>
+          <span>Desenvolvedor Front-End</span> com habilidades em <span>JavaScript</span>, <span>React, Tailwind CSS, Sass, Git e GitHub</span>, além de experiência com <span>Node.js</span> para o desenvolvimento de aplicações completas. Tenho interesse em criar interfaces modernas e responsivas, utilizando ferramentas como <span>Figma</span> para o design e prototipação. Atualmente, estou cursando <span>Análise e Desenvolvimento de Sistemas</span>, aprimorando meu conhecimento técnico para oferecer soluções inovadoras e eficazes. Sempre busco novos desafios para crescer profissionalmente e aplicar minhas habilidades em projetos que façam a diferença.
+        </p>
+      </div>
+    </section>
+
+    <section class="cards-section" id="habilidades">
+      <h2 class="titulo animated">&lt;habilidades/&gt;</h2>
+      <div class="skills-line animated"></div>
+      <div class="container">
+        <div class="card"><p>HTML5</p><img src="html.svg" alt="HTML5 Logo" /></div>
+        <div class="card"><p>CSS3</p><img src="css.svg" alt="CSS3 Logo" /></div>
+        <div class="card"><p>JavaScript</p><img src="javascript.svg" alt="JavaScript Logo" /></div>
+        <div class="card"><p>React.js</p><img src="react.svg" alt="React.js Logo" /></div>
+        <div class="card"><p>Next.js</p><img src="nextjs.svg" alt="Next.js Logo" /></div>
+        <div class="card"><p>Material UI</p><img src="materialui.svg" alt="Material UI Logo" /></div>
+        <div class="card"><p>Tailwind CSS</p><img src="tailwindcss.svg" alt="Tailwind CSS Logo" /></div>
+        <div class="card"><p>SASS</p><img src="sass.svg" alt="SASS Logo" /></div>
+      </div>
+    </section>
+
+    <section class="projects-section" id="projetos">
+        <h2 class="projects-title animated">&lt;projetos/&gt;</h2>
+        <div class="projects-line animated"></div>
+        <p class="projects-description animated">
+            Projetos são uma forma importante de aprimorar suas habilidades como desenvolvedor. Sinta-se à vontade para visitar minha página no <span>GitHub</span> e conferir meus repositórios!
+        </p>
+        <div class="projects-grid">
+            <div class="project-card animated" data-project="proj1"><div class="project-image-wrapper"><img loading="lazy" src="assets-portfólio/Captura de tela 2025-03-12 182846.png" alt="Coração Animal" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj2"><div class="project-image-wrapper"><img loading="lazy" src="assets-portfólio/Captura de tela 2025-03-12 182305.png" alt="Sala 3D" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj3"><div class="project-image-wrapper"><img loading="lazy" src="assets-portfólio/Captura de tela 2025-03-12 182459.png" alt="Clone Spotify" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj4"><div class="project-image-wrapper"><img loading="lazy" src="assets-portfólio/Captura de tela de 2025-01-05 13-49-21.png" alt="Restaurante Barcarollo" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj5"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-04-29 143735.png" alt="Login 3D" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj6"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-04-29 154917.png" alt="Clone Microsoft" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj7"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-14 100754.png" alt="Clone Spotify 2" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj8"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-14 101140.png" alt="E-commerce" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj9"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-14 101701.png" alt="Clone Spotify 3" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj10"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-14 102026.png" alt="Universo Marvel 3D" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj11"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-14 102319.png" alt="Slider Vingadores" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj12"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-14 102553.png" alt="Login Verde" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj13"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-14 102855.png" alt="Lua 3D" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj14"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-14 103218.png" alt="Barbearia" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj15"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-14 103607.png" alt="Background Animado" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj16"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-14_10-41-25.png" alt="Terra 3D" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj17"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-17 175932.png" alt="Landing Page Cidade" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj18"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-17 180313.png" alt="Carrossel Ilustrativo" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj19"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-17 180555.png" alt="Carta 3D" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj20"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-17 181057.png" alt="Jogo Tower" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj21"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-17 181634.png" alt="Velloz" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj22"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-22 210134.png" alt="FP Sellection" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+        </div>
+        
+    </section>
+
+    <section id="contato">
+      <div class="contato-content animated">
+        <h2 class="contato-titulo">&lt;contato/&gt;</h2>
+        <div class="contato-container">
+          <a href="mailto:enzodevsoft@gmail.com" class="contato-link-item"><div class="contato-item"><div class="contato-icone"><img src="EMAIL.svg" alt="E-mail" /></div><p class="contato-subtitulo">E-mail</p><span class="contato-link">enzodevsoft@gmail.com</span></div></a>
+          <a href="tel:+5151981380402" class="contato-link-item"><div class="contato-item"><div class="contato-icone"><img src="PHONE.svg" alt="Telefone" /></div><p class="contato-subtitulo">Telefone</p><span class="contato-link">(51) 98138-0402</span></div></a>
+          <a href="https://www.linkedin.com/in/enzo-gattelli-3158b02a3/" target="_blank" class="contato-link-item"><div class="contato-item"><div class="contato-icone"><img src="LINKEDIN.svg" alt="LinkedIn" /></div><p class="contato-subtitulo">LinkedIn</p><span class="contato-link">@enzogattelli</span></div></a>
+          <a href="https://github.com/EnzoDevSoft" target="_blank" class="contato-link-item"><div class="contato-item"><div class="contato-icone"><img src="GITHUB.svg" alt="GitHub" /></div><p class="contato-subtitulo">GitHub</p><span class="contato-link">@enzogattelli</span></div></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="footer">
+      <div class="footer-content">
+          <p>&copy; 2025 Enzo Gattelli. Desenvolvido com paixão e código.</p>
+      </div>
+  </footer>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Fechar modal">&times;</button>
+      <div class="video-container">
+        <video class="video" controls controlsList="nodownload" poster="assets-portfólio/poster-placeholder.jpg">
+          <source src="" type="video/mp4" />
+          Seu navegador não suporta o elemento de vídeo.
+        </video>
+      </div>
+      <div class="modal-text">
+        <h2 class="modal-title">Título do Projeto</h2>
+        <p class="modal-description"></p>
+        <div class="modal-technologies-container"></div>
+        <p class="modal-date"></p>
+        <div class="modal-buttons">
+            <a href="#" class="modal-btn" id="deploy-link" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Deploy
+            </a>
+            <a href="#" class="modal-btn" id="github-link" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                Repositório
+            </a>
+            <a href="#" class="modal-btn" id="linkedin-link" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                Post no LinkedIn
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
