@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     proj3: {
       title: "Clone do Spotify - Aplicação Full-Stack",
       description: "Este projeto foi desenvolvido como parte dos meus estudos no curso da Hashtag Programação, com o objetivo de me aprofundar nas tecnologias do universo Full-Stack. Inspirado na interface e na usabilidade do Spotify, criei um clone funcional da plataforma, com foco na experiência do usuário, design moderno, manipulação de dados e estruturação de um sistema completo, tanto no Front-End quanto no Back-End. Desde o início, encarei este projeto como uma oportunidade de testar minha capacidade de construir uma aplicação robusta, que vai além da interface visual, alcançando também o funcionamento interno da aplicação – como o controle das músicas, navegação entre faixas, simulação de usuários e início da estrutura de banco de dados. Porém, ainda não terminei o restante para poder reproduzir as faixas de música.",
-      technologies: ["React", "MongoDB", "SASS"],
+      technologies: [ "HTML5", "CSS3" ,"React", "MongoDB", "SASS"],
       date: "20/12/2023",
       video: "videos/fullstack.mp4",
       deploy: "#",

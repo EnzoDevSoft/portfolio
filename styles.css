@@ -303,6 +303,8 @@ body.light-mode .modal-description {
     cursor: pointer;
     text-decoration: none;
     transition: all 0.3s ease;
+    text-align: center;
+    justify-content: center;
 }
 
 .modal-btn:hover {
