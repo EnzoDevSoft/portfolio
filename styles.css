@@ -252,11 +252,12 @@ body.light-mode .project-card {
     border-radius: 10px;
     width: 100%;
     max-width: 1600px;
-    max-height: 72vh;
+    max-height: 90vh; /* Aumentado para dar mais espaço */
     padding: 30px;
     gap: 30px;
     position: relative;
-    overflow: hidden;
+    overflow-y: auto; /* Adicionado para permitir rolagem dentro do modal */
+    flex-direction: row; /* Padrão para desktop */
 }
 body.light-mode .modal-content {
     background-color: var(--card-light);
@@ -281,21 +282,28 @@ body.light-mode .modal-close:hover {
     color: var(--text-light);
 }
 .video-container {
-flex: 1.5;
-min-width: 300px;
-overflow: hidden; 
+    flex: 1.5;
+    min-width: 0; /* Permite que o flex item encolha */
+    overflow: hidden;
+    display: flex; /* Garante que o vídeo dentro dele se comporte bem */
+    align-items: center;
+    justify-content: center;
 }
 .video {
     width: 100%;
+    max-height: 100%; /* Garante que o vídeo não saia do container */
     border-radius: 8px;
+    object-fit: contain; /* Garante que o vídeo seja totalmente visível */
 }
 .modal-text {
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-width: 0;
+    min-width: 0; /* Permite que o flex item encolha */
     text-align: left;
     overflow-wrap: break-word;
+    overflow-y: auto; /* Permite rolagem do texto se for muito longo */
+    padding-right: 10px; /* Espaço para a barra de rolagem */
 }
 .modal-title {
     font-size: 1.8rem;
@@ -312,10 +320,107 @@ overflow: hidden;
     overflow-y: auto; 
     padding-right: 20px; 
     text-align: center;
-    max-height: 200px;
+    max-height: none; /* Removido max-height fixo */
     scrollbar-width: thin;
     scrollbar-color: #4a4a52 var(--card-dark);
     position: relative; 
+}
+body.light-mode .modal-description {
+    color: #555;
+}
+.technologies-title {
+    width: 100%;
+    flex-basis: 100%;
+    margin-top: auto;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.modal-technologies-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+.tech-tag {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: #33d45f;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(40, 167, 69, 0.4);
+}
+.modal-date {
+    font-size: 0.8rem;
+    color: #888;
+    padding-top: 15px;
+    text-align: center;
+}
+.modal-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+.modal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    background-color: transparent;
+    color: var(--primary-color);
+    padding: 8px 15px;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    justify-content: center;
+}
+.modal-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+.modal-btn svg {
+    width: 20px;
+    height: 20px;
+}
+.modal-btn .icon-stroke {
+    stroke: var(--primary-color);
+}
+.modal-btn:hover .icon-stroke {
+    stroke: white;
+}
+.modal-btn .icon-fill {
+    fill: var(--primary-color);
+}
+.modal-btn:hover .icon-fill {
+    fill: white;
+}
+/* Media Query para telas menores */
+@media (max-width: 768px) {
+  .modal-content { 
+    flex-direction: column; 
+    max-height: 95vh; /* Ajuste para caber melhor na altura da tela */
+    padding: 15px; /* Padding menor em mobile */
+    gap: 15px; /* Espaço menor entre elementos */
+  }
+  .video-container {
+    min-width: auto; /* Remove min-width fixo para mobile */
+    max-height: 40vh; /* Limita a altura do vídeo em mobile para não ocupar muito espaço */
+  }
+  .modal-text {
+    min-width: auto; /* Remove min-width fixo para mobile */
+    padding-right: 0; /* Remove padding extra para a barra de rolagem do texto */
+  }
+  .modal-description {
+    max-height: 150px; /* Pode precisar de um max-height em mobile se o texto for muito longo */
+    padding-right: 0; /* Ajuste o padding para a barra de rolagem */
+  }
 }
 body.light-mode .modal-description {
     color: #555;
