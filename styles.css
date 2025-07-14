@@ -77,9 +77,9 @@ footer, section:last-child { border-bottom: none; }
     transition: 0.3s ease;
     cursor: pointer;
     font-family: var(--font-primary);
-    display: inline-block; /* Para que padding funcione */
-    text-align: center; /* Para centralizar o texto dentro do botão */
-    text-decoration: none; /* Remover sublinhado do link */
+    display: inline-block;
+    text-align: center;
+    text-decoration: none; /
 }
 #home .button-link-style:hover {
     transform: scale(1.05);
@@ -252,12 +252,12 @@ body.light-mode .project-card {
     border-radius: 10px;
     width: 100%;
     max-width: 1600px;
-    max-height: 90vh; /* Aumentado para dar mais espaço */
+    max-height: 90vh; 
     padding: 30px;
     gap: 30px;
     position: relative;
-    overflow-y: auto; /* Adicionado para permitir rolagem dentro do modal */
-    flex-direction: row; /* Padrão para desktop */
+    overflow-y: auto; 
+    flex-direction: row; 
 }
 body.light-mode .modal-content {
     background-color: var(--card-light);
@@ -283,27 +283,27 @@ body.light-mode .modal-close:hover {
 }
 .video-container {
     flex: 1.5;
-    min-width: 0; /* Permite que o flex item encolha */
+    min-width: 0; 
     overflow: hidden;
-    display: flex; /* Garante que o vídeo dentro dele se comporte bem */
+    display: flex; 
     align-items: center;
     justify-content: center;
 }
 .video {
     width: 100%;
-    max-height: 100%; /* Garante que o vídeo não saia do container */
+    max-height: 100%;
     border-radius: 8px;
-    object-fit: contain; /* Garante que o vídeo seja totalmente visível */
+    object-fit: contain; 
 }
 .modal-text {
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-width: 0; /* Permite que o flex item encolha */
+    min-width: 0; 
     text-align: left;
     overflow-wrap: break-word;
-    overflow-y: auto; /* Permite rolagem do texto se for muito longo */
-    padding-right: 10px; /* Espaço para a barra de rolagem */
+    overflow-y: auto; 
+    padding-right: 10px;
 }
 .modal-title {
     font-size: 1.8rem;
@@ -320,7 +320,7 @@ body.light-mode .modal-close:hover {
     overflow-y: auto; 
     padding-right: 20px; 
     text-align: center;
-    max-height: none; /* Removido max-height fixo */
+    max-height: none; 
     scrollbar-width: thin;
     scrollbar-color: #4a4a52 var(--card-dark);
     position: relative; 
@@ -401,25 +401,25 @@ body.light-mode .modal-description {
 .modal-btn:hover .icon-fill {
     fill: white;
 }
-/* Media Query para telas menores */
+
 @media (max-width: 768px) {
   .modal-content { 
     flex-direction: column; 
-    max-height: 95vh; /* Ajuste para caber melhor na altura da tela */
-    padding: 15px; /* Padding menor em mobile */
-    gap: 15px; /* Espaço menor entre elementos */
+    max-height: 95vh; 
+    padding: 15px; 
+    gap: 15px; 
   }
   .video-container {
-    min-width: auto; /* Remove min-width fixo para mobile */
-    max-height: 40vh; /* Limita a altura do vídeo em mobile para não ocupar muito espaço */
+    min-width: auto; 
+    max-height: 40vh; 
   }
   .modal-text {
-    min-width: auto; /* Remove min-width fixo para mobile */
-    padding-right: 0; /* Remove padding extra para a barra de rolagem do texto */
+    min-width: auto; 
+    padding-right: 0; 
   }
   .modal-description {
-    max-height: 150px; /* Pode precisar de um max-height em mobile se o texto for muito longo */
-    padding-right: 0; /* Ajuste o padding para a barra de rolagem */
+    max-height: 150px; 
+    padding-right: 0; 
   }
 }
 body.light-mode .modal-description {
