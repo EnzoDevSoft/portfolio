@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // === LÓGICA DO TEMA CLARO/ESCURO ===
   const themeToggle = document.getElementById("theme-toggle");
   const body = document.body;
   
@@ -16,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("theme", body.classList.contains("light-mode") ? "light" : "dark");
   });
 
-  // === LÓGICA DO MENU HAMBÚRGUER ===
   const hamburguerMenu = document.querySelector('.hamburguer-menu');
   const mobileNavLinks = document.querySelector('.mobile-nav-links');
   const allMobileLinks = mobileNavLinks.querySelectorAll('a');
@@ -30,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
   hamburguerMenu.addEventListener('click', toggleMenu);
   allMobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
 
-  // === ANIMAÇÕES DE SCROLL OTIMIZADAS ===
   const animatedElements = document.querySelectorAll('.animated');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -43,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
   animatedElements.forEach(el => observer.observe(el));
 
-  // === LÓGICA DO MODAL ===
   const modal = document.getElementById("modal");
   const closeModalBtn = document.querySelector(".modal-close");
   const projectButtons = document.querySelectorAll(".project-card");
@@ -62,41 +58,41 @@ document.addEventListener("DOMContentLoaded", () => {
     proj1: {
       title: "Coração Animal - Plataforma de Apoio",
       description: "Este projeto foi desenvolvido como um exercício prático para testar e aprimorar minhas habilidades em Front-End, com foco em design responsivo, interação do usuário e propósito social. Mais do que apenas um desafio técnico, esta aplicação nasceu da minha preocupação com a preservação da vida selvagem e a crescente ameaça de extinção de diversas espécies ao redor do mundo. Além de funcionar como um espaço educativo, o projeto também tem um viés de ação prática: um botão “Doar” estrategicamente posicionado. Permite que visitantes engajados com a causa contribuam diretamente com instituições e movimentos sérios que trabalham em prol da fauna ameaçada. A intenção por trás desse botão não é apenas promover a doação, mas também criar um canal de conexão entre quem quer ajudar e quem está na linha de frente da proteção ambiental.",
-      technologies: ["HTML5", "CC3 / SASS", "JavaScript"],
+      technologies: ["HTML5", "CSS3 / SASS", "JavaScript"],
       date: "15/01/2024",
-      video: "videos/coracao.mp4",
-      deploy: "#",
-      github: "#",
+      video: "videos/ani.mp4",
+      deploy: "https://landing-omega-ochre.vercel.app/",
+      github: "https://github.com/EnzoDevSoft/Landing",
       linkedin: "#"
     },
     proj2: {
       title: "Sala 3D Imersiva - Arte e Gameplay",
       description: "Este projeto foi idealizado como uma prática pessoal para explorar e consolidar meus conhecimentos em desenvolvimento Front-End, especialmente no que diz respeito à renderização 3D em ambiente web. Busquei criar uma experiência visual imersiva e única, unindo elementos que me inspiram e que fazem parte do meu universo pessoal, como personagens icônicos e cenas de gameplay. Um dos grandes diferenciais da sala são os quadros digitais posicionados nas paredes, exibindo personagens que admiro profundamente. Além disso, inseri uma gameplay em looping contínuo, transmitida em uma TV do ambiente. Esse detalhe contribui para o clima imersivo, transmitindo a sensação de que o usuário está em um espaço onde a tecnologia e a paixão por jogos se encontram em harmonia.",
-      technologies: ["JavaScript", "Three.js", "HTML5", "CSS3"],
+      technologies: ["JavaScript", "HTML5", "CSS3 / SASS"],
       date: "20/02/2024",
       video: "videos/sala3d.mp4",
-      deploy: "#",
-      github: "#",
+      deploy: "https://3d-room-pied.vercel.app/",
+      github: "https://github.com/EnzoDevSoft/3d-room",
       linkedin: "#"
     },
     proj3: {
       title: "Clone do Spotify - Aplicação Full-Stack",
       description: "Este projeto foi desenvolvido como parte dos meus estudos no curso da Hashtag Programação, com o objetivo de me aprofundar nas tecnologias do universo Full-Stack. Inspirado na interface e na usabilidade do Spotify, criei um clone funcional da plataforma, com foco na experiência do usuário, design moderno, manipulação de dados e estruturação de um sistema completo, tanto no Front-End quanto no Back-End. Desde o início, encarei este projeto como uma oportunidade de testar minha capacidade de construir uma aplicação robusta, que vai além da interface visual, alcançando também o funcionamento interno da aplicação – como o controle das músicas, navegação entre faixas, simulação de usuários e início da estrutura de banco de dados. Porém, ainda não terminei o restante para poder reproduzir as faixas de música.",
-      technologies: [ "HTML5", "CSS3" ,"React", "MongoDB", "SASS"],
+      technologies: [ "HTML5","CSS3 / SASS","React", "JavaScript", "TypeScript", "MongoDB"],
       date: "20/12/2023",
       video: "videos/fullstack.mp4",
-      deploy: "#",
-      github: "#",
+      deploy: "https://spotify-full-stack-five.vercel.app/",
+      github: "https://github.com/EnzoDevSoft/Spotify-FullStack",
       linkedin: "#"
     },
     proj4: {
       title: "Barcarollo",
       description: "Este projeto foi desenvolvido com o objetivo de testar e refinar minhas habilidades como desenvolvedor Front-End, unindo estética sofisticada, boa estrutura de código e uma experiência visual envolvente. O conceito do projeto gira em torno de um restaurante italiano fictício de alto padrão, chamado Barcarollo, com uma proposta moderna, elegante e focada na valorização visual dos pratos. Mais do que apenas um exercício técnico, essa aplicação foi pensada como um exemplo de como o design digital pode traduzir sensações físicas, como sabor, aroma e ambiente. A missão foi criar um site com um visual extremamente limpo, organizado e intuitivo, onde a simplicidade do design evidenciasse a beleza dos pratos e transmitisse a identidade refinada de um restaurante italiano autêntico.",
-      technologies: ["HTML5", "Sass", "JavaScript"],
+      technologies: ["HTML5", "CSS3", "JavaScript"],
       date: "05/03/2024",
       video: "videos/barcarollo.mp4",
-      deploy: "#",
-      github: "#",
+      deploy: "https://barcarollo.vercel.app/",
+      github: "https://github.com/EnzoDevSoft/Barcarollo",
       linkedin: "#"
     },
     proj5: {
@@ -105,18 +101,18 @@ document.addEventListener("DOMContentLoaded", () => {
       technologies: ["HTML5", "CSS3", "JavaScript"],
       date: "10/03/2024",
       video: "videos/login3d.mp4",
-      deploy: "#",
-      github: "#",
+      deploy: "https://vertical-login.vercel.app/",
+      github: "https://github.com/EnzoDevSoft/vertical-login",
       linkedin: "#"
     },
     proj6: {
       title: "Clone Microsoft",
       description: "Este projeto foi desenvolvido com o propósito de recriar com o máximo de fidelidade o site oficial da Microsoft, utilizando apenas tecnologias de Front-End. O desafio era simular a navegação, o estilo visual e a arquitetura de um dos maiores sites corporativos do mundo, com o objetivo de testar meu nível de atenção aos detalhes, organização de layout e domínio de estilização responsiva. Ao longo da criação, busquei me aproximar o máximo possível da identidade visual da marca, recriando seções como menus superiores, banners interativos, carrosséis de produtos, destaques e rodapé institucional — sempre com um olhar atento à coerência visual, alinhamento e comportamento dos elementos em diferentes tamanhos de tela.",
-      technologies: ["HTML5", "CSS3"],
+      technologies: ["HTML5", "CSS3", "JavaScript"],
       date: "18/03/2024",
       video: "videos/microsoft.mp4",
-      deploy: "#",
-      github: "#",
+      deploy: "https://microsoft-iota-ivory.vercel.app/",
+      github: "https://github.com/EnzoDevSoft/microsoft-lidff",
       linkedin: "#"
     },
     proj7: {
@@ -125,8 +121,8 @@ document.addEventListener("DOMContentLoaded", () => {
         technologies: ["HTML5", "CSS3", "JavaScript"],
         date: "25/03/2024",
         video: "videos/alura.mp4",
-        deploy: "#",
-        github: "#",
+        deploy: "https://alura-spotiffy.vercel.app/",
+        github: "https://github.com/EnzoDevSoft/alura-spotiffy",
         linkedin: "#"
     },
     proj8: {
@@ -135,18 +131,18 @@ document.addEventListener("DOMContentLoaded", () => {
         technologies: ["HTML5", "CSS3", "JavaScript"],
         date: "02/04/2024",
         video: "videos/estilohouse.mp4",
-        deploy: "#",
-        github: "#",
+        deploy: "https://estilo-house.vercel.app/",
+        github: "https://github.com/EnzoDevSoft/shopp-Clothes",
         linkedin: "#"
     },
     proj9: {
-        title: "Clone Spotify - Web",
-        description: "Este projeto representa uma versão mais simples e web básica de um clone do Spotify, criada com o objetivo de experimentar ideias de estrutura e layout de forma leve, rápida e direta ao ponto. Mesmo não tendo sido finalizado, o processo de construção foi extremamente proveitoso, pois me permitiu reforçar fundamentos da construção de páginas web estáticas, testar elementos visuais e funcionais inspirados na plataforma original, além de explorar o conceito de modularização visual em uma interface mais enxuta. A proposta foi desenvolver uma versão compacta e funcional, ideal para testar rapidamente estruturas de navegação, organização de sessões musicais e elementos do player, sem necessariamente adicionar lógicas complexas ou interações avançadas neste momento.",
+        title: "Spotify - Projeto Pessoal",
+        description: "Este projeto foi desenvolvido com o objetivo de recriar a interface e experiência do usuário do Spotify, buscando alcançar o máximo de fidelidade visual e funcional em relação à plataforma original. A interface conta com seções de álbuns, navegação lateral e player fixo ao centro da tela. Como diferencial, personalizei o projeto com um álbum dedicado ao meu artista favorito, incluindo suas principais músicas, o que trouxe um toque pessoal à experiência e demonstrou minha atenção aos detalhes e à usabilidade real do sistema. O projeto reforça minhas habilidades em construção de interfaces complexas, manipulação de listas dinâmicas e foco na experiência do usuário — tudo com um design limpo e moderno inspirado em um dos maiores apps de streaming do mundo.",
         technologies: ["HTML5", "CSS3", "JavaScript"],
         date: "10/04/2024",
-        video: "videos/macdemarco.mp4",
-        deploy: "#",
-        github: "#",
+        video: "videos/spoti.mp4",
+        deploy: "https://mac-spotify.vercel.app/",
+        github: "https://github.com/EnzoDevSoft/Mac-Spotify",
         linkedin: "#"
     },
     proj10: {
@@ -155,8 +151,8 @@ document.addEventListener("DOMContentLoaded", () => {
         technologies: ["HTML5", "CSS3", "JavaScript"],
         date: "15/04/2024",
         video: "videos/marvel3d.mp4",
-        deploy: "#",
-        github: "#",
+        deploy: "https://marvel-alpha-one.vercel.app/",
+        github: "https://github.com/EnzoDevSoft/marvel",
         linkedin: "#"
     },
     proj11: {
@@ -165,8 +161,8 @@ document.addEventListener("DOMContentLoaded", () => {
         technologies: ["HTML5", "CSS3", "JavaScript"],
         date: "20/04/2024",
         video: "videos/vingadores.mp4",
-        deploy: "#",
-        github: "#",
+        deploy: "https://slider-vingadores.vercel.app/",
+        github: "https://github.com/EnzoDevSoft/slider-mar",
         linkedin: "#"
     },
     proj12: {
@@ -175,8 +171,8 @@ document.addEventListener("DOMContentLoaded", () => {
         technologies: ["HTML5","CSS3"],
         date: "22/04/2024",
         video: "videos/login.mp4",
-        deploy: "#",
-        github: "#",
+        deploy: "https://login-kappa-sage.vercel.app/",
+        github: "https://github.com/EnzoDevSoft/login-basic",
         linkedin: "#"
     },
     proj13: {
@@ -185,18 +181,18 @@ document.addEventListener("DOMContentLoaded", () => {
         technologies: ["HTML5","CSS3 / SASS","JavaScript"],
         date: "28/04/2024",
         video: "assets/video-placeholder.mp4",
-        deploy: "#",
-        github: "#",
+        deploy: "https://lua-3d.vercel.app/",
+        github: "https://github.com/EnzoDevSoft/Lua-3d",
         linkedin: "#"
     },
     proj14: {
         title: "Barbearia - Landing Page",
         description: "Este projeto foi desenvolvido durante uma aula prática de Front-End, ainda no início da minha jornada de estudos, com o objetivo de criar uma Landing Page moderna, funcional e intuitiva para uma barbearia. A proposta era proporcionar aos clientes uma experiência fluida e direta, desde a apresentação dos serviços até o agendamento de um horário para atendimento. A página foi idealizada para refletir o profissionalismo do negócio e facilitar o acesso dos clientes aos principais serviços oferecidos, além de integrar informações essenciais como localização, valores e um botão de ação rápida. Foi um dos meus primeiros projetos que combinou design limpo com funcionalidade real, e foi fundamental para solidificar meus conhecimentos iniciais em estruturação e estilização web.",
-        technologies: ["HTML5", "CSS3", "SASS"],
+        technologies: ["HTML5", "CSS3", "SASS", "JavaScript"],
         date: "02/05/2024",
-        video: "assets/video-placeholder.mp4",
-        deploy: "#",
-        github: "#",
+        video: "videos/barbearia.mp4",
+        deploy: "https://barber-sepia.vercel.app/",
+        github: "https://github.com/EnzoDevSoft/barber",
         linkedin: "#"
     },
     proj15: {
@@ -205,8 +201,8 @@ document.addEventListener("DOMContentLoaded", () => {
         technologies: ["HTML5","CSS3","JavaScript"],
         date: "05/05/2024",
         video: "assets/video-placeholder.mp4",
-        deploy: "#",
-        github: "#",
+        deploy: "https://background-animation-kappa.vercel.app/",
+        github: "https://github.com/EnzoDevSoft/background-animation",
         linkedin: "#"
     },
     proj16: {
@@ -215,8 +211,8 @@ document.addEventListener("DOMContentLoaded", () => {
         technologies: ["HTML5", "CSS3", "JavaScript"],
         date: "10/05/2024",
         video: "videos/terra3d.mp4",
-        deploy: "#",
-        github: "#",
+        deploy: "https://terra-3d.vercel.app/",
+        github: "https://github.com/EnzoDevSoft/Terra-3D",
         linkedin: "#"
     },
     proj17: {
@@ -225,18 +221,18 @@ document.addEventListener("DOMContentLoaded", () => {
         technologies: ["HTML5"],
         date: "15/05/2024",
         video: "videos/losangeles.mp4",
-        deploy: "#",
-        github: "#",
+        deploy: "https://los-angeles-city.vercel.app/",
+        github: "https://github.com/EnzoDevSoft/losangeles-city",
         linkedin: "#"
     },
     proj18: {
         title: "Carrossel - Ilustrativo",
         description: "Este projeto foi idealizado com o objetivo de explorar diferentes culturas ao redor do mundo através de imagens e palavras inspiradoras. Desenvolvi um carrossel interativo com foco visual e cultural, que exibe fotos ilustrativas de diversos países – como China, Islândia, EUA, entre outros acompanhadas de frases reflexivas e poéticas de escritores renomados que, de alguma forma, capturam a essência de cada nação apresentada.",
-        technologies: ["HTML5", "CSS3 / Stylus"],
+        technologies: ["HTML5", "CSS3 / Stylus", "JavaScript"],
         date: "20/05/2024",
         video: "videos/carrossel.mp4",
-        deploy: "#",
-        github: "#",
+        deploy: "https://carrossel-tau.vercel.app/",
+        github: "https://github.com/EnzoDevSoft/carrossel",
         linkedin: "#"
     },
     proj19: {
@@ -245,18 +241,18 @@ document.addEventListener("DOMContentLoaded", () => {
         technologies: ["HTML5","CSS3","JavaScript"],
         date: "25/05/2024",
         video: "assets/video-placeholder.mp4",
-        deploy: "#",
-        github: "#",
+        deploy: "https://ghost-carta.vercel.app/",
+        github: "https://github.com/EnzoDevSoft/ghost-carta",
         linkedin: "#"
     },
     proj20: {
         title: "Game Tower - Construção de Torres",
         description: "O Game Tower, é um projeto que desenvolvi em colaboração com colegas de curso, com o objetivo de aplicar na prática os conhecimentos adquiridos em programação e desenvolvimento de jogos durante nossa formação. O foco foi criar um jogo leve, viciante e acessível, ideal para usuários que desejam se entreter de forma rápida e divertida, enquanto tentam bater seus próprios recordes na construção de torres. Essa experiência em grupo proporcionou uma imersão completa no processo de desenvolvimento de um jogo, desde o planejamento e definição de mecânicas até a divisão de tarefas e execução em equipe, reforçando habilidades técnicas e de trabalho colaborativo.",
-        technologies: ["HTML5", "CSS3 / SASS", "TypeScript"],
+        technologies: ["HTML5", "CSS3 / SASS","JavaScript", "TypeScript"],
         date: "30/05/2024",
         video: "videos/gametower.mp4",
-        deploy: "#",
-        github: "#",
+        deploy: "https://game-tower.vercel.app/",
+        github: "https://github.com/EnzoDevSoft/Game-Tower",
         linkedin: "#"
     },
     proj21: {
@@ -264,9 +260,9 @@ document.addEventListener("DOMContentLoaded", () => {
         description: "Este projeto foi desenvolvido com o objetivo de praticar e evoluir minhas habilidades em desenvolvimento Front-End, criando uma plataforma simulada de aluguel de veículos com uma experiência de navegação fluida, moderna e responsiva. O site permite que os usuários escolham entre carros esportivos de alto desempenho, veículos off-road para aventuras ou passeios personalizados com condutores especializados, adequando-se a diferentes estilos de público. O diferencial do projeto está na flexibilidade: o cliente pode optar por alugar o veículo por dias, semanas ou meses, ou ainda contratar um passeio completo, com roteiros e experiências planejadas — seja em estradas urbanas, trilhas, montanhas ou litoral.",
         technologies: ["HTML5", "CSS3", "JavaScript"],
         date: "10/04/2024", 
-        video: "videos/cars.mp4",
-        deploy: "#",
-        github: "#",
+        video: "videos/carros.mp4",
+        deploy: "https://velozz.vercel.app/",
+        github: "https://github.com/EnzoDevSoft/Velozz",
         linkedin: "#"
     },
     proj22: { 
@@ -286,15 +282,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const projectId = card.getAttribute("data-project");
     const data = projectData[projectId];
     if (!data) return;
-
-    // 1. Limpa o vídeo anterior e reseta o poster
+    
     if (modalVideoSource) {
       modalVideoSource.src = "";
     }
     modalVideo.poster = "assets-portfólio/poster-placeholder.jpg";
     modalVideo.load();
 
-    // 2. Preenche todas as informações de texto
+    
     modalTitle.textContent = data.title;
     modalDescription.textContent = data.description;
     modalDate.textContent = `Data: ${data.date}`;
@@ -318,26 +313,27 @@ document.addEventListener("DOMContentLoaded", () => {
     modalGithubLink.href = data.github;
     modalLinkedinLink.href = data.linkedin;
 
-    // 3. Mostra o modal e inicia a sua animação de fade
+    
     modal.classList.add("active");
+    
     pageContent.classList.add("blur-active");
     document.body.style.overflow = "hidden";
 
-    // 4. A MÁGICA: Escuta pelo fim da animação do modal
+    
     function loadVideoOnTransitionEnd(event) {
-      // Garante que estamos ouvindo o evento certo no elemento certo
+      
       if (event.target === modal && event.propertyName === 'opacity') {
         console.log("Animação do modal terminada. Carregando vídeo...");
         if (modalVideoSource && data.video) {
           modalVideoSource.src = data.video;
           modalVideo.load();
         }
-        // IMPORTANTE: Remove o listener para não ser executado novamente
+        
         modal.removeEventListener('transitionend', loadVideoOnTransitionEnd);
       }
     }
     
-    // Adiciona o listener que vai chamar a função acima QUANDO a transição acabar
+    
     modal.addEventListener('transitionend', loadVideoOnTransitionEnd);
   };
 
@@ -346,17 +342,17 @@ document.addEventListener("DOMContentLoaded", () => {
     pageContent.classList.remove("blur-active");
     document.body.style.overflow = "auto";
     if (modalVideo) {
-      // Para o vídeo e reseta
+      
       modalVideo.pause();
       modalVideo.currentTime = 0;
-      // Interrompe qualquer download e libera memória de vídeo
+      
       if (modalVideoSource) {
         modalVideoSource.src = "";
       }
     }
   };
 
-  // Conecta os botões às funções
+  
   projectButtons.forEach(button => button.addEventListener('click', openModal));
   closeModalBtn.addEventListener('click', hideModal);
   modal.addEventListener('click', (event) => {
@@ -366,3 +362,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+
+

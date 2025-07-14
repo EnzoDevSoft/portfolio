@@ -4,11 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfólio | Enzo Gattelli - Desenvolvedor Front-End</title>
+  <link rel="icon" href="assets-portfólio/por.png" type="image/jpeg">
+
 
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
@@ -46,39 +49,49 @@
 
   <main id="page-content">
     <section id="home">
-      <div class="main-container">
-        <div class="image-link">
-          <div class="image">
-            <img src="assets-portfólio/WhatsApp Image 2025-06-13 at 20.55.31.jpeg" alt="Foto de Enzo Gattelli" />
-          </div>
-        </div>
-        <div class="content">
-          <h1>Olá, me chamo <span>Enzo Gattelli! :)</span></h1>
-          <div class="paragraph">
-            <p><span>Desenvolvedor Front-End</span></p>
-          </div>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/enzo-gattelli-3158b02a3/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://github.com/EnzoDevSoft" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.facebook.com/profile.php?id=100008157727598" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.instagram.com/enzoo__dev/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          </div>
-          <div class="btn">
-            <button>Download CV</button>
-            <a href="#contato"><button>Entrar em contato</button></a>
-          </div>
-        </div>
+  <div class="main-container">
+    
+    <div class="image-link animate-on-load fade-in-left">
+      <div class="image">
+        <img src="assets-portfólio/WhatsApp Image 2025-06-13 at 20.55.31.jpeg" alt="Foto de Enzo Gattelli" />
       </div>
-    </section>
+    </div>
+
+    <div class="content">
+      <h1 class="animate-on-load fade-in-up delay-1">Olá, me chamo <span>Enzo Gattelli! :)</span></h1>
+      
+      <div class="paragraph animate-on-load fade-in-up delay-2">
+        <p><span>Desenvolvedor Front-End</span></p>
+      </div>
+      
+      <div class="social-links animate-on-load fade-in-up delay-3">
+        <a href="https://www.linkedin.com/in/enzo-gattelli-3158b02a3/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/EnzoDevSoft" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100008157727598" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/enzoo__dev/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+      
+      <div class="btn animate-on-load fade-in-up delay-4">
+        <button>Download CV</button>
+        <a href="#contato"><button>Entrar em contato</button></a>
+      </div>
+    </div>
+
+  </div>
+</section>
 
     <section class="about-me" id="sobre">
-      <div class="about-me-content animated">
-        <h2>&lt;sobre mim/&gt;</h2>
-        <p>
-          <span>Desenvolvedor Front-End</span> com habilidades em <span>JavaScript</span>, <span>React, Tailwind CSS, Sass, Git e GitHub</span>, além de experiência com <span>Node.js</span> para o desenvolvimento de aplicações completas. Tenho interesse em criar interfaces modernas e responsivas, utilizando ferramentas como <span>Figma</span> para o design e prototipação. Atualmente, estou cursando <span>Análise e Desenvolvimento de Sistemas</span>, aprimorando meu conhecimento técnico para oferecer soluções inovadoras e eficazes. Sempre busco novos desafios para crescer profissionalmente e aplicar minhas habilidades em projetos que façam a diferença.
-        </p>
-      </div>
-    </section>
+  <div class="about-me-content animated">
+    <h2>&lt;sobre mim/&gt;</h2>
+    <p>
+      <span>Desenvolvedor Front-End</span> apaixonado por transformar ideias em interfaces intuitivas, modernas e responsivas. Tenho sólida experiência com <span>JavaScript</span> e <span>React.js</span>, além de domínio de ferramentas como <span>Tailwind CSS</span>, <span>Bootstrap</span>, <span>Sass</span> e <span>Material UI</span>. Já trabalhei com <span>TypeScript</span> e <span>MongoDB</span> em projetos desafiadores, ampliando minha visão <span>Full-Stack</span>.
+      <br><br>
+      Atualmente curso <span>Análise e Desenvolvimento de Sistemas</span> e estou em constante evolução, sempre buscando novas tecnologias e boas práticas de desenvolvimento. Meu objetivo é ir além do Front-End e me consolidar como um <span>Desenvolvedor Full-Stack</span> completo, pronto para resolver problemas reais com eficiência e criatividade.
+      <br><br>
+      Não estou apenas construindo códigos — estou construindo minha carreira com foco, dedicação e vontade de fazer a diferença em cada projeto que eu participo.
+    </p>
+  </div>
+</section>
 
     <section class="cards-section" id="habilidades">
       <h2 class="titulo animated">&lt;habilidades/&gt;</h2>
@@ -88,7 +101,6 @@
         <div class="card"><p>CSS3</p><img src="css.svg" alt="CSS3 Logo" /></div>
         <div class="card"><p>JavaScript</p><img src="javascript.svg" alt="JavaScript Logo" /></div>
         <div class="card"><p>React.js</p><img src="react.svg" alt="React.js Logo" /></div>
-        <div class="card"><p>Next.js</p><img src="nextjs.svg" alt="Next.js Logo" /></div>
         <div class="card"><p>Material UI</p><img src="materialui.svg" alt="Material UI Logo" /></div>
         <div class="card"><p>Tailwind CSS</p><img src="tailwindcss.svg" alt="Tailwind CSS Logo" /></div>
         <div class="card"><p>SASS</p><img src="sass.svg" alt="SASS Logo" /></div>
@@ -122,7 +134,7 @@
             <div class="project-card animated" data-project="proj18"><div class="project-image-wrapper"><img loading="lazy" src="assets-portfólio/Captura de tela 2025-03-12 182530.png" alt="Carrossel Ilustrativo" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
             <div class="project-card animated" data-project="proj19"><div class="project-image-wrapper"><img loading="lazy" src="assets-portfólio/Captura de tela 2025-03-12 182804.png" alt="Carta 3D" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
             <div class="project-card animated" data-project="proj20"><div class="project-image-wrapper"><img loading="lazy" src="assets-portfólio/Captura de tela 2025-03-12 182724.png" alt="Jogo Tower" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
-            <div class="project-card animated" data-project="proj21"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-17 181634.png" alt="Velloz" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
+            <div class="project-card animated" data-project="proj21"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-26 192237.png" alt="Velloz" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
             <div class="project-card animated" data-project="proj22"><div class="project-image-wrapper"><img loading="lazy" src="assets-projetos/Captura de tela 2025-06-22 114808.png" alt="FP Sellection" class="project-image"><div class="view-icon-overlay"><i class="fas fa-eye"></i></div></div><button class="view-more-btn">Ver mais</button></div>
         </div>
         
